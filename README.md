@@ -1,27 +1,54 @@
-# Week 7 - Challenge WeekEnd - RepoFront
+# Nirvana
 
-## Robots
+## Descripción
 
-Tendrás que crear un **frontend** en React (con Redux) que permita al usuario gestionar un listado con sus robots. El usuario debe poder listar, crear, modificar y borrar robots. Cada robot debe mostrar un nombre, una imagen (URL de internet) y unas características:
+Proyecto Final. Se creará una página web, del tipo mobile-first, sobre planificación viajes.
 
--   Velocidad (0-10)
--   Resistencia (0-10)
--   Fecha de creación
+### Mínimos
 
-Tendrás que crear una base de datos MongoDB para almacenar los robots, en Atlas.
+Al ingresar, se podrán ver fotos de los destinos con una breve descripción. Si el usuario hace click sobre estas 'tarjetas', de no estar logado lo
+redireccionará al formulario de loggin. En cambio, de estar logado, le direccionará a los detalles de la locación.
 
-Tendrás que crear una API REST con Express, con los siguientes endpoints:
+En la sección de detalles, aparecerán datos sobre la locación (como por ej puntos a visitar) y además el usuario tendrá un botón al través del cuál podrá guardar
+la locación seleccionada en su lista de 'Lugares a visitar'.
+En la sección lugares a visitar, el usuario podrá gestionar su lista de la forma que desee, pudiendo eliminar o agregar lugares e indicar si ya ha visitado
+el lugar a través de otro botón.
+Además la página contará con un buscador (solo para usuarios logados) filtre por país.
 
-[GET] /robots -> devuelve un array con todos los robots de la BD
+### Extras
 
-[GET] /robots/:idRobot -> devuelve un robot de la BD por id
+Generar un calendario donde el usuario pueda indicar que visitará un determinado lugar, en una fecha determinada. Esto se reflejará en su lista de lugares y en
+el inicio, cuando este loggeado.
 
-[POST*] /robots/create -> recibe un robot (sin id), lo crea en la BD y devuelve el robot recién creado
+### Modelo de datos
 
-[PATCH*] /robots/update -> recibe un robot, modifica en la BD el robot con la misma id que el recibido, y devuelve el robot modificado
+```
+IUser:
+    id: Types.ObjectId;
+    name: string;
+    email: string;
+    password: string;
+    visitedPlaces: Array<Types.ObjectId>;
 
-[DELETE*] /robots/delete/:idRobot -> elimina de la BD un robot por id y devuelve un objeto con la id
+Category:
+    category: 'beach' | 'mountain' | 'forest' | 'lake';
 
-Recuerda que cada response debe ir con un código de status adecuado y que todos los body de las responses tienen que ser **objetos** en JSON.
+IPlace:
+    id: Types.ObjectId;
+    country: string;
+    description: string;
+    mustVisit: string;
+    img: string;
+    isVisited: boolean;
+    isNewPlace: boolean;
+    category: Category;
+    traveler: Types.ObjectId;
+```
 
-Sora decirlo: **TESTEAMOS** todo y lo mostramos en **SonarCloud**.
+### Listado de componentes
+
+https://www.notion.so/Final-Proyect-955fad18dea24e51bc5fd45388eaf997
+
+### Figma
+
+https://www.figma.com/file/hyITt8SoPbB5AxY2NIcfwO/Proyecto-Final?node-id=13%3A502&t=TYMwbtA7TJA4WAtG-1
