@@ -1,6 +1,4 @@
-export type Category = {
-    category: "beach" | "mountain" | "forest" | "lake" | "city";
-};
+export type Category = 'beach' | 'mountain' | 'forest' | 'lake' | 'city';
 
 export type IPlace = {
     id: string;
