@@ -37,6 +37,15 @@
             "testing-library/no-render-in-setup": "off"
         }
     },
+    "prettier": {
+        "singleQuote": true
+    },
+    "jest": {
+        "coveragePathIgnorePatterns": [
+            "<rootDir>/src/reportWebVitals.ts",
+            "<rootDir>/src/index.ts"
+        ]
+    },
     "browserslist": {
         "production": [
             ">0.2%",
@@ -47,13 +56,6 @@
             "last 1 chrome version",
             "last 1 firefox version",
             "last 1 safari version"
-        ]
-    },
-    "jest": {
-        "coveragePathIgnorePatterns": [
-            "<rootDir>/src/reportWebVitals.ts",
-            "<rootDir>/src/index.ts",
-            "<rootDir>/src/tools/debug.ts"
         ]
     },
     "devDependencies": {
