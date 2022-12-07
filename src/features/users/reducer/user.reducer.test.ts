@@ -18,7 +18,7 @@ describe('Given the placesReducer()', () => {
     describe('When the action is LOAD', () => {
         test('Then the returned state should be the action payload', () => {
             action = {
-                type: actionTypes.load,
+                type: actionTypes.userLoad,
                 payload: [mockUser],
             };
             const result = userReducer(state, action);
@@ -29,7 +29,7 @@ describe('Given the placesReducer()', () => {
     describe('When the action is ADD', () => {
         test('Then the returned state should include the action payload', () => {
             action = {
-                type: actionTypes.add,
+                type: actionTypes.userAdd,
                 payload: mockUser,
             };
 
@@ -41,7 +41,7 @@ describe('Given the placesReducer()', () => {
     describe('When the action is UPDATE', () => {
         test('if the id is valid, then the returned state should include the action payload', () => {
             action = {
-                type: actionTypes.update,
+                type: actionTypes.userUpdate,
                 payload: { ...mockUser, title: 'Updated User' },
             };
             state = [mockUser];
@@ -51,7 +51,7 @@ describe('Given the placesReducer()', () => {
 
         test('if the id is NOT valid, then the returned state should be the action payload', () => {
             action = {
-                type: actionTypes.update,
+                type: actionTypes.userUpdate,
                 payload: { ...mockUser, id: '9', title: 'Updated User' },
             };
             state = [mockUser];
@@ -63,7 +63,7 @@ describe('Given the placesReducer()', () => {
     describe('When the action is DELETE', () => {
         test('if the id is valid, then the return state should include the action payload', () => {
             action = {
-                type: actionTypes.delete,
+                type: actionTypes.userDelete,
                 payload: mockUser,
             };
             state = [mockUser];
@@ -73,7 +73,7 @@ describe('Given the placesReducer()', () => {
 
         test('if the id is NOT valid, then the returned state should not include the action payload', () => {
             action = {
-                type: actionTypes.delete,
+                type: actionTypes.userDelete,
                 payload: { ...mockUser, id: '9' },
             };
             state = [mockUser];
