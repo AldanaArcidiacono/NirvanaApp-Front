@@ -30,7 +30,7 @@ name: SonarCloud Analysis
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
@@ -60,8 +60,8 @@ jobs:
           args:
             # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
             # mandatory
-            -Dsonar.projectKey=AldanaArcidiacono_202210-weekend7-aldana-arcidiacono-front
-            -Dsonar.organization=aldanaarcidiacono
+            -Dsonar.projectKey=isdi-coders-2022_Aldana_Arcidiacono_Front-Final-Project-202210-MAD
+            -Dsonar.organization=isdi-coders-2022
 
             # Comma-separated paths to directories containing main source files.
             #-Dsonar.sources= # optional, default is project base directory
