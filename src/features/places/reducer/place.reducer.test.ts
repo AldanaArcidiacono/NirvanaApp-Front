@@ -1,3 +1,4 @@
+import { IUser } from '../../users/entities/users';
 import { Category, IPlace } from '../entities/places';
 import { actionTypes } from './place.action.types';
 import { placesReducer } from './place.reducer';
@@ -11,7 +12,7 @@ describe('Given the placesReducer()', () => {
         img: '',
         category: 'mountain' as Category,
         userFav: '',
-        owner: '638785e04ddf430eef1fcf6d',
+        owner: { id: '638785e04ddf430eef1fcf6d' } as IUser,
     };
 
     let action: { type: string; payload: unknown };

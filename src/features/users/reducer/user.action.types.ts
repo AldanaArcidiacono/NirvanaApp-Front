@@ -1,6 +1,7 @@
 export const actionTypes = {
-    userLoad: 'user@load',
-    userAdd: 'users@add',
-    userUpdate: 'users@update',
-    userDelete: 'users@delete',
+    startLogging: 'user@startLogging',
+    login: 'user@login',
+    logout: 'user@logout',
+    addFav: 'user@addFav',
+    deleteFav: 'user@deleteFav',
 };

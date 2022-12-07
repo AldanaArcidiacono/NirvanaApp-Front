@@ -2,13 +2,14 @@ import { createAction } from '@reduxjs/toolkit';
 import { IUser } from '../entities/users';
 import { actionTypes } from './user.action.types';
 
-export const userLoadActionCreator = createAction<Array<IUser>>(
-    actionTypes.userLoad
+export const startLoggingActionCreator = createAction<void>(
+    actionTypes.startLogging
 );
-export const userAddActionCreator = createAction<IUser>(actionTypes.userAdd);
-export const userUpdateActionCreator = createAction<IUser>(
-    actionTypes.userUpdate
+export const loginActionCreator = createAction<{ user: IUser; token: string }>(
+    actionTypes.login
 );
-export const userDeleteActionCreator = createAction<IUser>(
-    actionTypes.userDelete
+export const logoutActionCreator = createAction<void>(actionTypes.logout);
+export const addFavActionCreator = createAction<IUser>(actionTypes.addFav);
+export const deleteFavActionCreator = createAction<IUser>(
+    actionTypes.deleteFav
 );

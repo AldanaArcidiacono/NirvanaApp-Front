@@ -1,6 +1,7 @@
 export const actionTypes = {
-    load: 'place@load',
+    load: 'places@load',
     add: 'places@add',
     update: 'places@update',
     delete: 'places@delete',
+    select: 'places@select',
 };

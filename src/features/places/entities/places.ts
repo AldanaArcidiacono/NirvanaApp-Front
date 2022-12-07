@@ -1,3 +1,5 @@
+import { IUser } from '../../users/entities/users';
+
 export type Category = 'beach' | 'mountain' | 'forest' | 'lake' | 'city';
 
 export type IPlace = {
@@ -8,7 +10,7 @@ export type IPlace = {
     img: string;
     category: Category;
     userFav: string;
-    owner: string;
+    owner: IUser;
 };
 
 export type IProtoPlace = {
@@ -18,5 +20,5 @@ export type IProtoPlace = {
     img?: string;
     category?: Category;
     userFav?: string;
-    owner?: string;
+    owner?: IUser;
 };
