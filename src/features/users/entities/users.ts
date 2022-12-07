@@ -1,4 +1,4 @@
-import { IPlace } from './places';
+import { IPlace } from '../../places/entities/places';
 
 export type IUser = {
     id: string;
