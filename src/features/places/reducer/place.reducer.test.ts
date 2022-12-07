@@ -1,6 +1,6 @@
-import { Category, IPlace } from '../../entities/places';
-import { actionTypes } from './action.types';
-import { placesReducer } from './reducer';
+import { Category, IPlace } from '../entities/places';
+import { actionTypes } from './place.action.types';
+import { placesReducer } from './place.reducer';
 
 describe('Given the placesReducer()', () => {
     const mockPlace = {
