@@ -13,72 +13,99 @@ describe('Given the placesReducer()', () => {
     };
 
     let action: { type: string; payload: unknown };
-    let state: Array<IUser>;
+    let state: {
+        isLogged: boolean;
+        isLogging: boolean;
+        user: IUser | null;
+        token: string | null;
+    };
 
-    describe('When the action is LOAD', () => {
-        test('Then the returned state should be the action payload', () => {
+    describe('When the action is STARTLOGGING', () => {
+        test('Then the returned state should include isLogging on true in the action payload', () => {
             action = {
-                type: actionTypes.userLoad,
-                payload: [mockUser],
+                type: actionTypes.startLogging,
+                payload: {
+                    isLogging: true,
+                    isLogged: false,
+                    user: null,
+                    token: null,
+                },
+            };
+
+            const result = userReducer(state, action);
+            expect(result).toEqual(action.payload);
+        });
+    });
+
+    describe('When the action is LOGIN', () => {
+        test('Then the returned state should be the user and token action payload', () => {
+            action = {
+                type: actionTypes.login,
+                payload: {
+                    isLogging: false,
+                    isLogged: true,
+                    token: 'token',
+                    user: mockUser,
+                },
+            };
+            state = {
+                ...state,
             };
             const result = userReducer(state, action);
             expect(result).toEqual(action.payload);
         });
     });
 
-    describe('When the action is ADD', () => {
-        test('Then the returned state should include the action payload', () => {
+    describe('When the action is LOGOUT', () => {
+        test('Then the returned state should be the initialState', () => {
             action = {
-                type: actionTypes.userAdd,
-                payload: mockUser,
+                type: actionTypes.logout,
+                payload: {
+                    isLogging: false,
+                    isLogged: false,
+                    user: null,
+                    token: null,
+                },
             };
-
+            state = {
+                ...state,
+            };
             const result = userReducer(state, action);
-            expect(result).toContainEqual(action.payload);
+            expect(result).toEqual(action.payload);
         });
     });
 
-    describe('When the action is UPDATE', () => {
-        test('if the id is valid, then the returned state should include the action payload', () => {
+    describe('When the action is ADDFAV', () => {
+        test('Then the return state should include the updated action payload', () => {
             action = {
-                type: actionTypes.userUpdate,
-                payload: { ...mockUser, title: 'Updated User' },
+                type: actionTypes.addFav,
+                payload: {
+                    user: { ...mockUser, favPlaces: ['Update favPlace'] },
+                },
             };
-            state = [mockUser];
-            const result = userReducer(state, action);
-            expect(result).toContainEqual(action.payload);
-        });
-
-        test('if the id is NOT valid, then the returned state should be the action payload', () => {
-            action = {
-                type: actionTypes.userUpdate,
-                payload: { ...mockUser, id: '9', title: 'Updated User' },
+            state = {
+                ...state,
+                user: mockUser,
             };
-            state = [mockUser];
             const result = userReducer(state, action);
-            expect(result).toEqual(state);
+            expect(result).toEqual({ user: action.payload });
         });
     });
 
-    describe('When the action is DELETE', () => {
-        test('if the id is valid, then the return state should include the action payload', () => {
+    describe('When the action is DELETEFAV', () => {
+        test('Then the return state should include the updated action payload', () => {
             action = {
-                type: actionTypes.userDelete,
-                payload: mockUser,
+                type: actionTypes.deleteFav,
+                payload: {
+                    user: { ...mockUser, favPlaces: [] },
+                },
             };
-            state = [mockUser];
-            const result = userReducer(state, action);
-            expect(result).toStrictEqual([]);
-        });
-
-        test('if the id is NOT valid, then the returned state should not include the action payload', () => {
-            action = {
-                type: actionTypes.userDelete,
-                payload: { ...mockUser, id: '9' },
+            state = {
+                ...state,
+                user: mockUser,
             };
-            state = [mockUser];
             const result = userReducer(state, action);
-            expect(result).toEqual(state);
+            expect(result).toEqual({ user: action.payload });
         });
     });
 
@@ -88,7 +115,10 @@ describe('Given the placesReducer()', () => {
                 type: '',
                 payload: null,
             };
-            state = [mockUser];
+            state = {
+                ...state,
+                user: mockUser,
+            };
             const result = userReducer(state, action);
             expect(result).toEqual(state);
         });
