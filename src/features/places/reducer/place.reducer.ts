@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { IPlace } from '../../entities/places';
-import * as ac from './action.creator';
+import { IPlace } from '../entities/places';
+import * as ac from './place.action.creator';
 
 const initialState: Array<IPlace> = [];
 
