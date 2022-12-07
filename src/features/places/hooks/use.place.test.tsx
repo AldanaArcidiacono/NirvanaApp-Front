@@ -76,7 +76,7 @@ describe('Given the hook usePlace()', () => {
     describe('When we use the handleUpdate(),', () => {
         test('Then it should return mockPlace and have been called', async () => {
             await waitFor(() => {
-                result.current.handleUpdate(mockPlaceUpdated.id, mockPlace);
+                result.current.handleUpdate(mockPlaceUpdated);
                 expect(result.current.places.at(-1)).toEqual(mockPlace);
             });
             await waitFor(() => {
