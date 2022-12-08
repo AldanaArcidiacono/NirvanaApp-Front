@@ -1,14 +1,37 @@
+import { Category } from '../../places/entities/places';
 import { IUser } from '../entities/users';
 import { actionTypes } from './user.action.types';
 import { userReducer } from './user.reducer';
 
-describe('Given the placesReducer()', () => {
+describe('Given the usersReducer()', () => {
+    const mockPlace = {
+        id: '6389bb90ed3e6a5b94faa5a9',
+        city: 'tucuman',
+        description: 'En el norte Argentino',
+        mustVisit: '',
+        img: '',
+        category: 'mountain' as Category,
+        userFav: '',
+        owner: { id: '123456789012345678907890' } as IUser,
+    };
+
+    const mockPlace2 = {
+        id: '6389ba90ee3e6a9b94faa5a7',
+        city: 'jujuy',
+        description: 'En el norte Argentino',
+        mustVisit: '',
+        img: '',
+        category: 'mountain' as Category,
+        userFav: '',
+        owner: { id: '123456789012345678907890' } as IUser,
+    };
+
     const mockUser = {
         id: '123456789012345678907890',
         name: 'Sergio',
         email: 'sergio@gmil.com',
         password: 'testingLove',
-        favPlaces: [],
+        favPlaces: [mockPlace2],
         createdPlaces: [],
     };
 
@@ -79,16 +102,14 @@ describe('Given the placesReducer()', () => {
         test('Then the return state should include the updated action payload', () => {
             action = {
                 type: actionTypes.addFav,
-                payload: {
-                    user: { ...mockUser, favPlaces: ['Update favPlace'] },
-                },
+                payload: mockPlace,
             };
             state = {
                 ...state,
                 user: mockUser,
             };
             const result = userReducer(state, action);
-            expect(result).toEqual({ user: action.payload });
+            expect(result.user?.favPlaces).toEqual([mockPlace2, mockPlace]);
         });
     });
 
@@ -96,16 +117,14 @@ describe('Given the placesReducer()', () => {
         test('Then the return state should include the updated action payload', () => {
             action = {
                 type: actionTypes.deleteFav,
-                payload: {
-                    user: { ...mockUser, favPlaces: [] },
-                },
+                payload: mockPlace2,
             };
             state = {
                 ...state,
                 user: mockUser,
             };
             const result = userReducer(state, action);
-            expect(result).toEqual({ user: action.payload });
+            expect(result.user?.favPlaces).toEqual([]);
         });
     });
 
