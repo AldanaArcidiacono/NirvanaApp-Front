@@ -21,7 +21,7 @@ export class UserRepo implements URepo<IUser> {
             });
     }
 
-    login(user: Partial<IUser>): Promise<IUser> {
+    login(user: Partial<IUser>): Promise<{ user: IUser; token: string }> {
         return fetch(`${this.url}/login`, {
             method: 'POST',
             body: JSON.stringify(user),
@@ -35,13 +35,12 @@ export class UserRepo implements URepo<IUser> {
             });
     }
 
-    // REVISAR AUTHORIZATION PARA LOS HEADERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     get(id: string): Promise<IUser> {
         return fetch(`${this.url}/${id}`, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         })
             .then((res) => res.json())
@@ -55,6 +54,7 @@ export class UserRepo implements URepo<IUser> {
             method: 'PATCH',
             headers: {
                 'Content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         })
             .then((res) => res.json())
@@ -68,6 +68,7 @@ export class UserRepo implements URepo<IUser> {
             method: 'PATCH',
             headers: {
                 'Content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         })
             .then((res) => res.json())
