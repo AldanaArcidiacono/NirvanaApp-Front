@@ -27,12 +27,19 @@ export const userReducer = createReducer(initialUserState, (builder) => {
     builder.addCase(ac.logoutActionCreator, (_state, action) => action.payload);
     builder.addCase(ac.addFavActionCreator, (state, action) => ({
         ...state,
-        user: action.payload,
-        //users: state.user?.favPlaces
+        user: {
+            ...state.user,
+            favPlaces: [...(state.user as IUser).favPlaces, action.payload],
+        } as IUser,
     }));
     builder.addCase(ac.deleteFavActionCreator, (state, action) => ({
         ...state,
-        user: action.payload,
+        user: {
+            ...state.user,
+            favPlaces: (state.user as IUser).favPlaces.filter(
+                (place) => place.id !== action.payload.id
+            ),
+        } as IUser,
     }));
     builder.addDefaultCase((state) => state);
 });
