@@ -1,0 +1,25 @@
+.header {
+    background-color: #A4A0FF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+}
+
+.h1 {
+    margin: 0.5rem;
+    color: #FFFCF2;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 32px;
+}
+
+.header__img {
+    margin-inline-start: 1rem;
+    height: 2.5rem;
+}
+
+.header__div {
+    display: flex;
+}
