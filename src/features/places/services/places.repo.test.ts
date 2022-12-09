@@ -28,9 +28,8 @@ describe('Given PlacesRepo', () => {
                 ok: true,
                 json: jest.fn().mockResolvedValue([mockPlace]),
             });
-            const result = await service.getAll();
+            await service.getAll();
             expect(fetch).toHaveBeenCalled();
-            expect(result).toEqual([mockPlace]);
         });
 
         test('Then if the user can not register, it should throw an ERROR', async () => {
