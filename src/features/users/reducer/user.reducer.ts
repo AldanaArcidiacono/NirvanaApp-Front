@@ -24,7 +24,13 @@ export const userReducer = createReducer(initialUserState, (builder) => {
         user: action.payload.user,
         token: action.payload.token,
     }));
-    builder.addCase(ac.logoutActionCreator, (_state, action) => action.payload);
+    builder.addCase(ac.logoutActionCreator, (state, _action) => ({
+        ...state,
+        isLogging: false,
+        isLogged: false,
+        user: null,
+        token: null,
+    }));
     builder.addCase(ac.addFavActionCreator, (state, action) => ({
         ...state,
         user: {

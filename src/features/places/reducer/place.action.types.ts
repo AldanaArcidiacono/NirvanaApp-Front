@@ -3,5 +3,4 @@ export const actionTypes = {
     add: 'places@add',
     update: 'places@update',
     delete: 'places@delete',
-    select: 'places@select',
 };
