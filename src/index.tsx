@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import './index.css';
-import { MemoryRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { App } from './infrastructure/components/app/app';
 import { appStore } from './infrastructure/store/store';
 import reportWebVitals from './reportWebVitals';
