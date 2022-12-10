@@ -22,7 +22,7 @@ export const useUsers = () => {
     };
 
     const handleAddFav = (place: IPlace) => {
-        console.log(place);
+        //console.log(place);
         apiUsers
             .addFav(place.id)
             .then(() => dispatcher(ac.addFavActionCreator(place)));
@@ -31,7 +31,7 @@ export const useUsers = () => {
     const handleDeleteFav = (place: IPlace) => {
         apiUsers
             .deleteFav(place.id)
-            .then(() => dispatcher(ac.addFavActionCreator(place)));
+            .then(() => dispatcher(ac.deleteFavActionCreator(place)));
     };
 
     return {
