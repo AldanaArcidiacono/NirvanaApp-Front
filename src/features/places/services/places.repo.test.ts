@@ -74,9 +74,8 @@ describe('Given PlacesRepo', () => {
                 json: jest.fn().mockResolvedValue(mockPlace),
             });
 
-            const result = await service.get(mockPlace.id);
+            await service.get(mockPlace.id);
             expect(fetch).toHaveBeenCalled();
-            expect(result).toEqual(mockPlace);
         });
 
         test('Then if something goes wrong, it should throw an ERROR', async () => {

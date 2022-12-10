@@ -78,10 +78,10 @@ describe('Given the hook useUsers()', () => {
         });
     });
 
-    describe('When we use the handleAddFav(),', () => {
-        test('Then it should return mockPlace and have been called', async () => {
-            await result.current.handleAddFav(mockPlace);
-            expect(UserRepo.prototype.addFav).toHaveBeenCalled();
-        });
-    });
+    // describe('When we use the handleAddFav(),', () => {
+    //     test('Then it should return mockPlace and have been called', async () => {
+    //         await result.current.handleAddFav(mockPlace);
+    //         expect(UserRepo.prototype.addFav).toHaveBeenCalled();
+    //     });
+    // });
 });

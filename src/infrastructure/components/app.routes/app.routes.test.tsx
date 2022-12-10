@@ -9,7 +9,7 @@ describe('Given AppRoutes component', () => {
     describe('When we render the component and the route is HOME', () => {
         render(
             <>
-                <Router initialEntries={['/', 'home']} initialIndex={0}>
+                <Router initialEntries={['/', '/home']} initialIndex={0}>
                     <Provider store={appStore}>
                         <AppRoutes />
                     </Provider>
