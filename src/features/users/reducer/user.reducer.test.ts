@@ -33,6 +33,7 @@ describe('Given the usersReducer()', () => {
         password: 'testingLove',
         favPlaces: [mockPlace2],
         createdPlaces: [],
+        img: '',
     };
 
     let action: { type: string; payload: unknown };

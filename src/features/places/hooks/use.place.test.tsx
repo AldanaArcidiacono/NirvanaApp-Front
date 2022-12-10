@@ -16,6 +16,7 @@ describe('Given the hook usePlace()', () => {
         password: 'testingLove',
         favPlaces: [],
         createdPlaces: [],
+        img: '',
     };
 
     const mockPlace = {

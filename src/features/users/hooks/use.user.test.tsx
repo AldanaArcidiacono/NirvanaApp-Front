@@ -18,6 +18,7 @@ describe('Given the hook useUsers()', () => {
         password: 'testingLove',
         favPlaces: [],
         createdPlaces: [],
+        img: '',
     };
 
     const mockPlace: IPlace = {
