@@ -18,8 +18,6 @@ export class PlacesRepo implements PRepo<IPlace> {
             });
     }
 
-    // REVISAR AUTHORIZATION PARA LOS HEADERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     query(key: string, value: string): Promise<Array<IPlace>> {
         return fetch(`${this.url}/${key}/${value}`, {
             method: 'GET',
@@ -43,6 +41,7 @@ export class PlacesRepo implements PRepo<IPlace> {
             },
         })
             .then((res) => res.json())
+            .then((resp) => resp.places)
             .catch((error) => {
                 return error;
             });

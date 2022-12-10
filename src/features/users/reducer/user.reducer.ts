@@ -18,7 +18,7 @@ export const userReducer = createReducer(initialUserState, (builder) => {
         token: null,
     }));
     builder.addCase(ac.loginActionCreator, (state, action) => {
-        console.log('ACA', action);
+        // console.log('ACA', action);
         return {
             ...state,
             isLogging: false,
@@ -35,7 +35,7 @@ export const userReducer = createReducer(initialUserState, (builder) => {
         token: null,
     }));
     builder.addCase(ac.addFavActionCreator, (state, action) => {
-        console.log({ state });
+        // console.log({ state });
         return {
             ...state,
             user: {
