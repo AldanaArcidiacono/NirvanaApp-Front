@@ -5,6 +5,8 @@ export function Menu() {
     const menuOptions = [
         { id: '1', path: 'home', label: 'Inicio' },
         { id: '2', path: 'register', label: 'Registro' },
+        { id: '3', path: 'login', label: 'Login' },
+        { id: '4', path: 'favorites', label: 'Mis Viajes' },
     ];
     return (
         <nav className={styles.menu__nav}>
