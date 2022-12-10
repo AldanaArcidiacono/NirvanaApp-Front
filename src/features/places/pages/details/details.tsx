@@ -19,6 +19,7 @@ export function PlacesDetails() {
     const { id } = useParams();
     const placeRepo = new PlacesRepo();
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const getPlace = async (id: string) => {
         const place = await placeRepo.get(id);
         setDetails(place);
@@ -26,7 +27,7 @@ export function PlacesDetails() {
 
     useEffect(() => {
         getPlace(id as string);
-    }, [id]);
+    }, [getPlace, id]);
 
     return (
         <>
