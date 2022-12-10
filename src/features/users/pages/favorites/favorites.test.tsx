@@ -29,6 +29,7 @@ describe('Given Favorites component', () => {
             password: 'testingLove',
             favPlaces: [mockPlace],
             createdPlaces: [],
+            img: '',
         };
 
         const preloadState: Partial<rootState> = {
@@ -84,6 +85,7 @@ describe('Given Favorites component', () => {
             password: 'testingLove',
             favPlaces: [],
             createdPlaces: [],
+            img: '',
         };
 
         const preloadState: Partial<rootState> = {
