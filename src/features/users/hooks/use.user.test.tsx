@@ -1,15 +1,17 @@
+import { configureStore } from '@reduxjs/toolkit';
 import { renderHook } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { appStore } from '../../../infrastructure/store/store';
+import { rootState } from '../../../infrastructure/store/store';
 import { Category, IPlace } from '../../places/entities/places';
 import { IProtoUser, IUser } from '../entities/users';
+import { userReducer } from '../reducer/user.reducer';
 import { UserRepo } from '../services/user.repo';
 import { useUsers } from './use.user';
 
 jest.mock('../services/user.repo');
 
 describe('Given the hook useUsers()', () => {
-    const mockUser = {
+    const mockUser: IUser = {
         id: '123456789012345678907890',
         name: 'Sergio',
         email: 'sergio@gmil.com',
@@ -29,15 +31,21 @@ describe('Given the hook useUsers()', () => {
         owner: { id: '123456789012345678907890' } as IUser,
     };
 
-    const mockAppStore = {
+    const preloadState: Partial<rootState> = {
         users: {
             isLogged: true,
             isLogging: false,
             user: mockUser,
-            token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODc4NWUwNGRkZjQzMGVlZjFmY2Y2ZCIsIm5hbWUiOiJBbmdvIiwiaWF0IjoxNjcwMzI0OTcxfQ.Esq-zbQVx4G5g8ThIMV-oNRBXpK3YZWtoJYVdJA9e1g',
+            token: '',
         },
-        places: [mockPlace],
     };
+
+    const mockAppStore = configureStore({
+        reducer: {
+            users: userReducer,
+        },
+        preloadedState: preloadState,
+    });
 
     let result: {
         current: {
@@ -56,8 +64,9 @@ describe('Given the hook useUsers()', () => {
 
     beforeEach(() => {
         UserRepo.prototype.login = jest.fn().mockResolvedValue(mockUser);
+        UserRepo.prototype.addFav = jest.fn().mockResolvedValue(mockPlace);
         const wrapper = ({ children }: { children: JSX.Element }) => (
-            <Provider store={appStore}>{children}</Provider>
+            <Provider store={mockAppStore}>{children}</Provider>
         );
         ({ result } = renderHook(() => useUsers(), { wrapper }));
     });
@@ -71,7 +80,6 @@ describe('Given the hook useUsers()', () => {
 
     describe('When we use the handleAddFav(),', () => {
         test('Then it should return mockPlace and have been called', async () => {
-            UserRepo.prototype.addFav = jest.fn().mockResolvedValue(mockPlace);
             await result.current.handleAddFav(mockPlace);
             expect(UserRepo.prototype.addFav).toHaveBeenCalled();
         });
