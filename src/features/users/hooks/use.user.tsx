@@ -4,6 +4,7 @@ import { rootState } from '../../../infrastructure/store/store';
 import { UserRepo } from '../services/user.repo';
 import * as ac from '../reducer/user.action.creator';
 import { IProtoUser } from '../entities/users';
+import { IPlace } from '../../places/entities/places';
 
 export const useUsers = () => {
     const users = useSelector((state: rootState) => state.users);
@@ -13,17 +14,31 @@ export const useUsers = () => {
     const handleLogin = (user: IProtoUser) => {
         apiUsers
             .login(user)
-            .then((response) => dispatcher(ac.loginActionCreator(response)));
+            .then((res) => dispatcher(ac.loginActionCreator(res)));
     };
 
-    // Recogo lo que el back me da desde parametros. El back me da un usuario y
-    // lo despachamos
-    // const handleAddFav = (user: IProtoUser) => {
-    // .then((response) => dispatcher(ac.loginActionCreator(response)));
-    // .then((response.user.favPlaces) => dispatcher(ac.loginActionCreator(response)));
+    const handleLogout = () => {
+        dispatcher(ac.logoutActionCreator());
+    };
+
+    const handleAddFav = (place: IPlace) => {
+        //console.log(place);
+        apiUsers
+            .addFav(place.id)
+            .then(() => dispatcher(ac.addFavActionCreator(place)));
+    };
+
+    const handleDeleteFav = (place: IPlace) => {
+        apiUsers
+            .deleteFav(place.id)
+            .then(() => dispatcher(ac.deleteFavActionCreator(place)));
+    };
 
     return {
         users,
         handleLogin,
+        handleLogout,
+        handleAddFav,
+        handleDeleteFav,
     };
 };

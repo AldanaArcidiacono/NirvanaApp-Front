@@ -9,17 +9,22 @@ export class PlacesRepo implements PRepo<IPlace> {
 
     getAll(): Promise<Array<IPlace>> {
         return fetch(this.url)
-            .then((res) => res.json())
+            .then((res) => {
+                return res.json();
+            })
+            .then((res) => res.places)
             .catch((error) => {
                 return error;
             });
     }
 
-    // REVISAR AUTHORIZATION PARA LOS HEADERS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     query(key: string, value: string): Promise<Array<IPlace>> {
         return fetch(`${this.url}/${key}/${value}`, {
             method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
         })
             .then((res) => res.json())
             .catch((error) => {
@@ -30,8 +35,13 @@ export class PlacesRepo implements PRepo<IPlace> {
     get(id: string): Promise<IPlace> {
         return fetch(`${this.url}/${id}`, {
             method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
         })
             .then((res) => res.json())
+            .then((resp) => resp.places)
             .catch((error) => {
                 return error;
             });
@@ -43,6 +53,7 @@ export class PlacesRepo implements PRepo<IPlace> {
             body: JSON.stringify(newPlace),
             headers: {
                 'Content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         })
             .then((res) => res.json())
@@ -57,6 +68,7 @@ export class PlacesRepo implements PRepo<IPlace> {
             body: JSON.stringify(updatedPlace),
             headers: {
                 'Content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         })
             .then((res) => res.json())
@@ -68,6 +80,10 @@ export class PlacesRepo implements PRepo<IPlace> {
     delete(id: string): Promise<{ id: string }> {
         return fetch(`${this.url}/${id}`, {
             method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
         })
             .then((res) => res.json())
             .catch((error) => {

@@ -17,21 +17,33 @@ export const userReducer = createReducer(initialUserState, (builder) => {
         user: null,
         token: null,
     }));
-    builder.addCase(ac.loginActionCreator, (state, action) => ({
+    builder.addCase(ac.loginActionCreator, (state, action) => {
+        // console.log('ACA', action);
+        return {
+            ...state,
+            isLogging: false,
+            isLogged: true,
+            user: action.payload.user,
+            token: action.payload.token,
+        };
+    });
+    builder.addCase(ac.logoutActionCreator, (state, _action) => ({
         ...state,
         isLogging: false,
-        isLogged: true,
-        user: action.payload.user,
-        token: action.payload.token,
+        isLogged: false,
+        user: null,
+        token: null,
     }));
-    builder.addCase(ac.logoutActionCreator, (_state, action) => action.payload);
-    builder.addCase(ac.addFavActionCreator, (state, action) => ({
-        ...state,
-        user: {
-            ...state.user,
-            favPlaces: [...(state.user as IUser).favPlaces, action.payload],
-        } as IUser,
-    }));
+    builder.addCase(ac.addFavActionCreator, (state, action) => {
+        // console.log({ state });
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                favPlaces: [...(state.user as IUser).favPlaces, action.payload],
+            } as IUser,
+        };
+    });
     builder.addCase(ac.deleteFavActionCreator, (state, action) => ({
         ...state,
         user: {

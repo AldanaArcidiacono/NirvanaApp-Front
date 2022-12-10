@@ -1,0 +1,24 @@
+.menu__ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    align-content: center;
+    margin-inline-end: 1.5rem;
+}
+
+.menu__list {
+    display: flex;
+    color: #FFFCF2;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+    margin-inline-end: 0.5rem;
+}
+
+.menu__link {
+    color: #FFFCF2;
+    text-decoration: none;
+}
+
+.menu__nav {
+    margin-inline-end: 1.5rem;
+}

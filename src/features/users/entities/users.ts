@@ -7,6 +7,7 @@ export type IUser = {
     password: string;
     favPlaces: Array<IPlace>;
     createdPlaces: Array<IPlace>;
+    img: string;
 };
 
 export type IProtoUser = {
@@ -15,4 +16,5 @@ export type IProtoUser = {
     password?: string;
     favPlaces?: Array<IPlace>;
     createdPlaces?: Array<IPlace>;
+    img?: string;
 };

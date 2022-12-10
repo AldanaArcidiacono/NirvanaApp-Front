@@ -1,4 +1,4 @@
-import { IUser } from '../entities/users';
+import { IProtoUser, IUser } from '../entities/users';
 import { URepo } from './repo';
 
 export class UserRepo implements URepo<IUser> {
@@ -7,7 +7,7 @@ export class UserRepo implements URepo<IUser> {
         this.url = 'http://localhost:3900/users';
     }
 
-    register(user: Partial<IUser>): Promise<IUser> {
+    register(user: IProtoUser): Promise<IUser> {
         return fetch(`${this.url}/register`, {
             method: 'POST',
             body: JSON.stringify(user),
@@ -21,7 +21,7 @@ export class UserRepo implements URepo<IUser> {
             });
     }
 
-    login(user: Partial<IUser>): Promise<{ user: IUser; token: string }> {
+    login(user: IProtoUser): Promise<{ user: IUser; token: string }> {
         return fetch(`${this.url}/login`, {
             method: 'POST',
             body: JSON.stringify(user),
