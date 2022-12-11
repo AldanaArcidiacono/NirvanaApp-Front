@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../../../infrastructure/store/store';
-import { IPlace, IProtoPlace } from '../entities/places';
+import { IProtoPlace } from '../entities/places';
 import * as ac from '../reducer/place.action.creator';
 import { PlacesRepo } from '../services/places.repo';
 
@@ -28,10 +28,8 @@ export const usePlaces = () => {
             .then((place) => dispatcher(ac.updateActionCreator(place)));
     };
 
-    const handleDelete = (place: IPlace) => {
-        apiPlaces
-            .delete(place.id)
-            .then(() => dispatcher(ac.deleteActionCreator(place)));
+    const handleDelete = (id: string) => {
+        apiPlaces.delete(id).then(() => dispatcher(ac.deleteActionCreator(id)));
     };
 
     return {

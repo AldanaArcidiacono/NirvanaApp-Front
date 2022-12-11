@@ -16,7 +16,7 @@ export const placesReducer = createReducer(initialState, (builder) => {
         )
     );
     builder.addCase(ac.deleteActionCreator, (state, action) =>
-        state.filter((item) => item.id !== action.payload.id)
+        state.filter((item) => item.id !== action.payload)
     );
     builder.addDefaultCase((state) => state);
 });

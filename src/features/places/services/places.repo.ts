@@ -48,7 +48,7 @@ export class PlacesRepo implements PRepo<IPlace> {
     }
 
     create(newPlace: Partial<IPlace>): Promise<IPlace> {
-        return fetch(`${this.url}/travels/`, {
+        return fetch(`${this.url}/`, {
             method: 'POST',
             body: JSON.stringify(newPlace),
             headers: {
@@ -77,11 +77,10 @@ export class PlacesRepo implements PRepo<IPlace> {
             });
     }
 
-    delete(id: string): Promise<{ id: string }> {
-        return fetch(`${this.url}/${id}`, {
+    delete(id: string): Promise<void> {
+        return fetch(`${this.url}/places/${id}`, {
             method: 'DELETE',
             headers: {
-                'Content-type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         })
