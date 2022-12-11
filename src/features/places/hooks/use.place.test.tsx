@@ -46,7 +46,7 @@ describe('Given the hook usePlace()', () => {
             places: IPlace[];
             handleAdd: (newPlace: IProtoPlace) => void;
             handleUpdate: (updatePlace: IPlace) => void;
-            handleDelete: (place: IPlace) => void;
+            handleDelete: (id: string) => void;
         };
     };
 
@@ -89,7 +89,7 @@ describe('Given the hook usePlace()', () => {
     describe('When we use the handleDelete(),', () => {
         test('Then it should return mockPlace and have been called', async () => {
             await waitFor(() => {
-                result.current.handleDelete(mockPlace);
+                result.current.handleDelete(mockPlace.id);
                 expect(result.current.places.at(-1)).toEqual(mockPlace);
             });
             await waitFor(() => {

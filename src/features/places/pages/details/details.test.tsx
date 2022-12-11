@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { appStore } from '../../../../infrastructure/store/store';
-import { PlacesDetails } from './details';
+import { Details } from './details';
 
 describe('Given Details component', () => {
     describe('When we render the component', () => {
@@ -12,7 +12,7 @@ describe('Given Details component', () => {
                 <>
                     <Provider store={appStore}>
                         <Router>
-                            <PlacesDetails></PlacesDetails>
+                            <Details></Details>
                         </Router>
                     </Provider>
                 </>
@@ -26,7 +26,7 @@ describe('Given Details component', () => {
                 <>
                     <Provider store={appStore}>
                         <Router>
-                            <PlacesDetails></PlacesDetails>
+                            <Details></Details>
                         </Router>
                     </Provider>
                 </>

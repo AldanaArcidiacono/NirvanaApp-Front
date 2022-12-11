@@ -4,7 +4,7 @@ import { Menu } from './menu';
 
 describe('Given Menu component', () => {
     describe('When we render the component', () => {
-        test('Then it should display "Registro"', () => {
+        test('Then it should display "Login"', () => {
             render(
                 <>
                     <Router>
@@ -12,7 +12,7 @@ describe('Given Menu component', () => {
                     </Router>
                 </>
             );
-            const element = screen.getByText(/Registro/i);
+            const element = screen.getByText(/Login/i);
             expect(element).toBeInTheDocument();
         });
         test('Then it should display "Inicio"', () => {

@@ -67,7 +67,7 @@ describe('Given the placesReducer()', () => {
         test('if the id is valid, then the return state should include the action payload', () => {
             action = {
                 type: actionTypes.delete,
-                payload: mockPlace,
+                payload: '6389bb90ed3e6a5b94faa5a9',
             };
             state = [mockPlace];
             const result = placesReducer(state, action);
