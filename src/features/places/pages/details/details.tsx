@@ -4,7 +4,7 @@ import { useUsers } from '../../../users/hooks/use.user';
 import { IPlace } from '../../entities/places';
 import { PlacesRepo } from '../../services/places.repo';
 
-export function PlacesDetails() {
+export function Details() {
     const [details, setDetails] = useState({
         id: '',
         city: '',
@@ -19,7 +19,6 @@ export function PlacesDetails() {
     const { id } = useParams();
     const placeRepo = new PlacesRepo();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const getPlace = async (id: string) => {
         const place = await placeRepo.get(id);
         setDetails(place);
@@ -27,21 +26,25 @@ export function PlacesDetails() {
 
     useEffect(() => {
         getPlace(id as string);
-    }, [getPlace, id]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id]);
 
     return (
         <>
             <h2>DETALLES</h2>
-            <p>{details.city}</p>
-            <button onClick={() => handleAddFav(details as IPlace)}>
-                AddFav
-            </button>
-            <img
-                src={details.img}
-                alt={'Image of ' + details.city}
-                height="200"
-            />
-            <p>{details.category}</p>
+            <section>
+                <p>{details.city}</p>
+                <button onClick={() => handleAddFav(details as IPlace)}>
+                    AddFav
+                </button>
+                <img
+                    src={details.img}
+                    alt={'Image of ' + details.city}
+                    height="200"
+                />
+                <p>{details.description}</p>
+                <p>{details.category}</p>
+            </section>
         </>
     );
 }
