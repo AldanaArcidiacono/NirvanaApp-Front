@@ -9,15 +9,15 @@ import { configureStore } from '@reduxjs/toolkit';
 import { userReducer } from '../../reducer/user.reducer';
 import userEvent from '@testing-library/user-event';
 
-describe('Given Favorites component', () => {
+describe('Given CreatedPlaces component', () => {
     describe('When we render the component', () => {
         const mockPlace: IPlace = {
-            id: '6389bb90ed3e6a5b94faa5a9',
-            city: 'tucuman',
-            description: 'En el norte Argentino',
+            id: '9389bb90ed3e6a5b94faa5a5',
+            city: 'Malaga',
+            description: 'En el sur de España',
             mustVisit: '',
             img: '',
-            category: 'mountain' as Category,
+            category: 'beach' as Category,
             userFav: '',
             owner: { id: '123456789012345678907890' } as IUser,
         };
@@ -48,7 +48,7 @@ describe('Given Favorites component', () => {
             preloadedState: preloadState,
         });
 
-        test('Then it should display the favorites list', () => {
+        test('Then it should display the created places list', () => {
             render(
                 <>
                     <Provider store={mockAppStore}>
@@ -62,7 +62,7 @@ describe('Given Favorites component', () => {
             expect(element).toBeInTheDocument();
         });
 
-        test('Then if the user clicks on the DELETEPLACE button, it should delete the item of the favorites list', async () => {
+        test('Then if the user clicks on the DELETEPLACE button, it should delete place', async () => {
             render(
                 <>
                     <Provider store={mockAppStore}>
@@ -77,7 +77,7 @@ describe('Given Favorites component', () => {
         });
     });
 
-    describe('If the user does not have favorites,', () => {
+    describe('If the user does not have created places,', () => {
         const mockUser2: IUser = {
             id: '123456789012345678907890',
             name: 'Sergio',
