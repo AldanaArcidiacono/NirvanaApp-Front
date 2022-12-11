@@ -1,4 +1,5 @@
 import { SyntheticEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { UserRepo } from '../../../../features/users/services/user.repo';
 
 type formData = {
@@ -68,7 +69,10 @@ export function Register() {
                     />
                     <button type="submit">Continuar</button>
                 </form>
-                <p>Ya tienes una cuenta? Para iniciar sesión haz click aquí</p>
+                <p>
+                    Ya tienes una cuenta? Para iniciar sesión{' '}
+                    <Link to={'/login'}>haz click aquí</Link>
+                </p>
             </section>
         </>
     );
