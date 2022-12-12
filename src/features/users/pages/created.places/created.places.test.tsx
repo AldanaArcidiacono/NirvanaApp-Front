@@ -3,11 +3,11 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { rootState } from '../../../../infrastructure/store/store';
 import { CreatedPlaces } from './created.places';
-import { IUser } from '../../entities/users';
 import { configureStore } from '@reduxjs/toolkit';
 import { userReducer } from '../../reducer/user.reducer';
 import userEvent from '@testing-library/user-event';
 import { mockAppStore } from '../../../../infrastructure/mocks/mocks';
+import { IUser } from '../../entities/users';
 
 describe('Given CreatedPlaces component', () => {
     describe('When we render the component', () => {
@@ -42,10 +42,10 @@ describe('Given CreatedPlaces component', () => {
 
     describe('If the user does not have created places,', () => {
         const mockUser2: IUser = {
-            id: '123456789012345678907890',
-            name: 'Sergio',
-            email: 'sergio@gmil.com',
-            password: 'testingLove',
+            id: '123456789009876543210987',
+            name: 'Sara',
+            email: 'sara@gmail.com',
+            password: 'peloazul',
             favPlaces: [],
             createdPlaces: [],
             img: '',
