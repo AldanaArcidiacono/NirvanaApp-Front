@@ -36,11 +36,30 @@ export const mockUser: IUser = {
     img: '',
 };
 
+export const mockUser2: IUser = {
+    id: '123456789009876543210987',
+    name: 'Sara',
+    email: 'sara@gmail.com',
+    password: 'peloazul',
+    favPlaces: [],
+    createdPlaces: [],
+    img: '',
+};
+
 export const preloadState: Partial<rootState> = {
     users: {
         isLogged: true,
         isLogging: false,
         user: mockUser,
+        token: '',
+    },
+};
+
+export const preloadState2: Partial<rootState> = {
+    users: {
+        isLogged: true,
+        isLogging: false,
+        user: mockUser2,
         token: '',
     },
 };
