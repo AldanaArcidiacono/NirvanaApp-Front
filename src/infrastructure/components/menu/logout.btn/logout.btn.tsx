@@ -9,7 +9,9 @@ export function LogoutBtn() {
                 href="http://localhost:3000/home"
                 className={styles.button__link}
             >
-                <button onClick={handleLogout}>Logout</button>
+                <button className={styles.button} onClick={handleLogout}>
+                    Logout
+                </button>
             </a>
         </>
     );

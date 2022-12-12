@@ -1,6 +1,7 @@
 import { SyntheticEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useUsers } from '../../../../features/users/hooks/use.user';
+import styles from './login.module.css';
 
 type formData = {
     email: string;
@@ -31,9 +32,10 @@ export function Login() {
 
     return (
         <>
-            <section>
-                <form onSubmit={handleLoginSubmit}>
+            <section className={styles.login__section}>
+                <form onSubmit={handleLoginSubmit} className={styles.form}>
                     <input
+                        className={styles.login__input}
                         type="email"
                         name="email"
                         placeholder="Email"
@@ -42,6 +44,7 @@ export function Login() {
                         required
                     />
                     <input
+                        className={styles.login__input}
                         type="password"
                         name="password"
                         placeholder="Contraseña"
@@ -49,10 +52,16 @@ export function Login() {
                         onInput={handleLoginInput}
                         required
                     />
-                    <button type="submit">Continuar</button>
+                    <button className={styles.login__button} type="submit">
+                        Continuar
+                    </button>
                 </form>
-                Aún no tienes una cuenta? Para registrarte{' '}
-                <Link to={'/register'}>haz click aquí</Link>
+                <div className={styles.login__text}>
+                    <p>Aún no tienes una cuenta? Para registrarte</p>
+                    <Link to={'/register'} className={styles.login__link_text}>
+                        haz click aquí
+                    </Link>
+                </div>
             </section>
         </>
     );

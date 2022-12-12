@@ -1,6 +1,7 @@
 import { SyntheticEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserRepo } from '../../../../features/users/services/user.repo';
+import styles from './register.module.css';
 
 type formData = {
     name: string;
@@ -36,9 +37,10 @@ export function Register() {
 
     return (
         <>
-            <section>
-                <form onSubmit={handleSubmit}>
+            <section className={styles.register__section}>
+                <form onSubmit={handleSubmit} className={styles.form}>
                     <input
+                        className={styles.register__input}
                         type="text"
                         name="name"
                         placeholder="Nombre completo"
@@ -48,6 +50,7 @@ export function Register() {
                         required
                     />
                     <input
+                        className={styles.register__input}
                         type="email"
                         name="email"
                         placeholder="Email"
@@ -56,6 +59,7 @@ export function Register() {
                         required
                     />
                     <input
+                        className={styles.register__input}
                         type="text"
                         name="img"
                         placeholder="Foto de perfil"
@@ -64,6 +68,7 @@ export function Register() {
                         required
                     />
                     <input
+                        className={styles.register__input}
                         type="password"
                         name="password"
                         placeholder="Contraseña"
@@ -72,19 +77,24 @@ export function Register() {
                         required
                     />
                     <input
+                        className={styles.register__input}
                         type="password"
                         name="repeatPasswd"
-                        placeholder="Repite tu Contraseña"
+                        placeholder="Repite tu contraseña"
                         value={formState.repeatPasswd}
                         onInput={handleInput}
                         required
                     />
-                    <button type="submit">Continuar</button>
+                    <button type="submit" className={styles.register__button}>
+                        Continuar
+                    </button>
                 </form>
-                <p>
-                    Ya tienes una cuenta? Para iniciar sesión{' '}
-                    <Link to={'/login'}>haz click aquí</Link>
-                </p>
+                <div className={styles.register__text}>
+                    <p>Ya tienes una cuenta? Para iniciar sesión</p>
+                    <Link to={'/login'} className={styles.register__link_text}>
+                        haz click aquí
+                    </Link>
+                </div>
             </section>
         </>
     );
