@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
     height: 4rem;
 }
 
@@ -21,13 +22,13 @@
 }
 
 .footer__div {
-    display: flex;
     height: 2rem;
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
 .div__logo {
-    display: flex;
     align-items: center;
 }
 
@@ -35,6 +36,4 @@
     color: #FFFCF2;
     font-size: 0.8rem;
     height: 1rem;
-    display: flex;
-    justify-content: flex-end;
 }
