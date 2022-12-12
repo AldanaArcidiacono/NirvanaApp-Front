@@ -1,14 +1,7 @@
+import { mockUser } from '../../../infrastructure/mocks/mocks';
 import { UserRepo } from './user.repo';
 
 describe('Given UserRepo', () => {
-    const mockUser = {
-        id: '123456789012345678907890',
-        name: 'Sergio',
-        email: 'sergio@gmil.com',
-        password: 'testingLove',
-        favPlaces: [],
-    };
-
     let service: UserRepo;
     let error: Error;
     beforeEach(() => {

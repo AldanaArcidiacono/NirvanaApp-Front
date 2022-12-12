@@ -3,51 +3,14 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { rootState } from '../../../../infrastructure/store/store';
 import { CreatedPlaces } from './created.places';
-import { Category, IPlace } from '../../../places/entities/places';
 import { IUser } from '../../entities/users';
 import { configureStore } from '@reduxjs/toolkit';
 import { userReducer } from '../../reducer/user.reducer';
 import userEvent from '@testing-library/user-event';
+import { mockAppStore } from '../../../../infrastructure/mocks/mocks';
 
 describe('Given CreatedPlaces component', () => {
     describe('When we render the component', () => {
-        const mockPlace: IPlace = {
-            id: '9389bb90ed3e6a5b94faa5a5',
-            city: 'Malaga',
-            description: 'En el sur de España',
-            mustVisit: '',
-            img: '',
-            category: 'beach' as Category,
-            userFav: '',
-            owner: { id: '123456789012345678907890' } as IUser,
-        };
-
-        const mockUser: IUser = {
-            id: '123456789012345678907890',
-            name: 'Sergio',
-            email: 'sergio@gmil.com',
-            password: 'testingLove',
-            favPlaces: [],
-            createdPlaces: [mockPlace],
-            img: '',
-        };
-
-        const preloadState: Partial<rootState> = {
-            users: {
-                isLogged: true,
-                isLogging: false,
-                user: mockUser,
-                token: '',
-            },
-        };
-
-        const mockAppStore = configureStore({
-            reducer: {
-                users: userReducer,
-            },
-            preloadedState: preloadState,
-        });
-
         test('Then it should display the created places list', () => {
             render(
                 <>

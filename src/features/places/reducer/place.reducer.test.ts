@@ -1,20 +1,10 @@
+import { mockPlace } from '../../../infrastructure/mocks/mocks';
 import { IUser } from '../../users/entities/users';
 import { Category, IPlace } from '../entities/places';
 import { actionTypes } from './place.action.types';
 import { placesReducer } from './place.reducer';
 
 describe('Given the placesReducer()', () => {
-    const mockPlace = {
-        id: '6389bb90ed3e6a5b94faa5a9',
-        city: 'tucuman',
-        description: 'En el norte Argentino',
-        mustVisit: '',
-        img: '',
-        category: 'mountain' as Category,
-        userFav: '',
-        owner: { id: '638785e04ddf430eef1fcf6d' } as IUser,
-    };
-
     let action: { type: string; payload: unknown };
     let state: Array<IPlace>;
 
@@ -67,7 +57,7 @@ describe('Given the placesReducer()', () => {
         test('if the id is valid, then the return state should include the action payload', () => {
             action = {
                 type: actionTypes.delete,
-                payload: '6389bb90ed3e6a5b94faa5a9',
+                payload: mockPlace,
             };
             state = [mockPlace];
             const result = placesReducer(state, action);

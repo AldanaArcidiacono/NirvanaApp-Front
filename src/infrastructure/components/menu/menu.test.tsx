@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
 import { MemoryRouter as Router } from 'react-router-dom';
+import { appStore } from '../../store/store';
 import { Menu } from './menu';
 
 describe('Given Menu component', () => {
@@ -8,7 +10,9 @@ describe('Given Menu component', () => {
             render(
                 <>
                     <Router>
-                        <Menu />
+                        <Provider store={appStore}>
+                            <Menu />
+                        </Provider>
                     </Router>
                 </>
             );
@@ -19,7 +23,9 @@ describe('Given Menu component', () => {
             render(
                 <>
                     <Router>
-                        <Menu />
+                        <Provider store={appStore}>
+                            <Menu />
+                        </Provider>
                     </Router>
                 </>
             );
