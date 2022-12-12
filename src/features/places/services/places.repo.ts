@@ -77,10 +77,11 @@ export class PlacesRepo implements PRepo<IPlace> {
             });
     }
 
-    delete(id: string): Promise<void> {
+    delete(id: string): Promise<IPlace> {
         return fetch(`${this.url}/places/${id}`, {
             method: 'DELETE',
             headers: {
+                'Content-type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         })

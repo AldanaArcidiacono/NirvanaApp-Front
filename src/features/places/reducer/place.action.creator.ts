@@ -5,4 +5,4 @@ import { actionTypes } from './place.action.types';
 export const loadActionCreator = createAction<Array<IPlace>>(actionTypes.load);
 export const addActionCreator = createAction<IPlace>(actionTypes.add);
 export const updateActionCreator = createAction<IPlace>(actionTypes.update);
-export const deleteActionCreator = createAction<string>(actionTypes.delete);
+export const deleteActionCreator = createAction<IPlace>(actionTypes.delete);
