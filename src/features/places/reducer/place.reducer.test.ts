@@ -1,6 +1,5 @@
 import { mockPlace } from '../../../infrastructure/mocks/mocks';
-import { IUser } from '../../users/entities/users';
-import { Category, IPlace } from '../entities/places';
+import { IPlace } from '../entities/places';
 import { actionTypes } from './place.action.types';
 import { placesReducer } from './place.reducer';
 
