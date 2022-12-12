@@ -5,6 +5,7 @@ import { Favorites } from '../favorites/favorites';
 
 export function Profile() {
     const { users } = useUsers();
+
     return (
         <>
             <div>

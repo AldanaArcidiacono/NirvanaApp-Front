@@ -1,20 +1,23 @@
 import { SyntheticEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserRepo } from '../../../../features/users/services/user.repo';
 
 type formData = {
     name: string;
     email: string;
+    img: string;
     password: string;
     repeatPasswd: string;
 };
 
 export function Register() {
+    const navigate = useNavigate();
     const userRepo = new UserRepo();
 
     const initialState: formData = {
         name: '',
         email: '',
+        img: '',
         password: '',
         repeatPasswd: '',
     };
@@ -28,6 +31,7 @@ export function Register() {
     const handleSubmit = async (ev: SyntheticEvent) => {
         ev.preventDefault();
         await userRepo.register(formState);
+        navigate('/login');
     };
 
     return (
@@ -48,6 +52,14 @@ export function Register() {
                         name="email"
                         placeholder="Email"
                         value={formState.email}
+                        onInput={handleInput}
+                        required
+                    />
+                    <input
+                        type="text"
+                        name="img"
+                        placeholder="Foto de perfil"
+                        value={formState.img}
                         onInput={handleInput}
                         required
                     />

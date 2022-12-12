@@ -1,22 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useUsers } from '../../../users/hooks/use.user';
-import { IPlace } from '../../entities/places';
 import { PlacesRepo } from '../../services/places.repo';
+import { usePlaces } from '../../hooks/use.place';
+import { Category } from '../../entities/places';
 
-export function Details() {
+export function DetailsCreatedPlaces() {
     const initialState = {
         id: '',
         city: '',
         description: '',
         mustVisit: '',
         img: '',
-        category: '',
-        userFav: '',
-        owner: {},
+        category: '' as Category,
     };
     const [details, setDetails] = useState(initialState);
-    const { handleAddFav } = useUsers();
+
+    const { handleUpdate } = usePlaces();
     const { id } = useParams();
     const placeRepo = new PlacesRepo();
 
@@ -32,12 +31,9 @@ export function Details() {
 
     return (
         <>
-            <h2>DETALLES</h2>
             <section>
-                <p>{details.city}</p>
-                <button onClick={() => handleAddFav(details as IPlace)}>
-                    AddFav
-                </button>
+                <h3>{details.city}</h3>
+                <button onClick={() => handleUpdate(details)}>EditPlace</button>
                 <img
                     src={details.img}
                     alt={'Image of ' + details.city}
