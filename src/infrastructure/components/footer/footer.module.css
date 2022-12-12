@@ -22,9 +22,19 @@
 
 .footer__div {
     display: flex;
+    height: 2rem;
+    align-items: center;
+}
+
+.div__logo {
+    display: flex;
+    align-items: center;
 }
 
 .div__address {
     color: #FFFCF2;
     font-size: 0.8rem;
+    height: 1rem;
+    display: flex;
+    justify-content: flex-end;
 }

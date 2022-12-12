@@ -1,4 +1,5 @@
 import { SyntheticEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useUsers } from '../../../../features/users/hooks/use.user';
 
 type formData = {
@@ -50,7 +51,8 @@ export function Login() {
                     />
                     <button type="submit">Continuar</button>
                 </form>
-                <p>Aún no tienes una cuenta? Para registrarte haz click aquí</p>
+                Aún no tienes una cuenta? Para registrarte{' '}
+                <Link to={'/register'}>haz click aquí</Link>
             </section>
         </>
     );

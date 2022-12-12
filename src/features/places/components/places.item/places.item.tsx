@@ -1,11 +1,16 @@
 import { IPlace } from '../../entities/places';
+import styles from './places.item.module.css';
 
 export function PlacesItem({ item }: { item: IPlace }) {
     return (
         <>
-            <p>{item.city}</p>
-            <img src={item.img} alt={'Image of ' + item.city} height="200" />
-            <p>{item.category}</p>
+            <p className={styles.list__city}>{item.city}</p>
+            <img
+                className={styles.list__img}
+                src={item.img}
+                alt={'Image of ' + item.city}
+                height="300"
+            />
         </>
     );
 }

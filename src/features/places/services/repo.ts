@@ -6,5 +6,5 @@ export interface PRepo<T> {
     get: (id: id) => Promise<T>;
     create: (newPlace: Partial<T>) => Promise<T>;
     update: (updatedPlace: Partial<T>) => Promise<T>;
-    delete: (id: id) => Promise<{ id: id }>;
+    delete: (id: id) => Promise<T>;
 }

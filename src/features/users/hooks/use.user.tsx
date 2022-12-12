@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../../../infrastructure/store/store';
 import { UserRepo } from '../services/user.repo';
 import * as ac from '../reducer/user.action.creator';
-import { IProtoUser } from '../entities/users';
+import { IProtoUser, IUser } from '../entities/users';
 import { IPlace } from '../../places/entities/places';
 
 export const useUsers = () => {
@@ -12,17 +12,25 @@ export const useUsers = () => {
     const apiUsers = useMemo(() => new UserRepo(), []);
 
     const handleLogin = (user: IProtoUser) => {
-        apiUsers
-            .login(user)
-            .then((res) => dispatcher(ac.loginActionCreator(res)));
+        apiUsers.login(user).then((res) => {
+            dispatcher(ac.loginActionCreator(res));
+            localStorage.setItem('token', res.token);
+        });
     };
 
     const handleLogout = () => {
         dispatcher(ac.logoutActionCreator());
+        localStorage.removeItem('token');
     };
 
     const handleAddFav = (place: IPlace) => {
-        //console.log(place);
+        if (
+            (users.user as IUser).favPlaces.find(
+                (item) => item.id.toString() === place.id
+            )
+        ) {
+            throw new Error('Bad Request');
+        }
         apiUsers
             .addFav(place.id)
             .then(() => dispatcher(ac.addFavActionCreator(place)));

@@ -1,31 +1,9 @@
-import { Category } from '../../places/entities/places';
+import { mockPlace, mockPlace2 } from '../../../infrastructure/mocks/mocks';
 import { IUser } from '../entities/users';
 import { actionTypes } from './user.action.types';
 import { userReducer } from './user.reducer';
 
 describe('Given the usersReducer()', () => {
-    const mockPlace = {
-        id: '6389bb90ed3e6a5b94faa5a9',
-        city: 'tucuman',
-        description: 'En el norte Argentino',
-        mustVisit: '',
-        img: '',
-        category: 'mountain' as Category,
-        userFav: '',
-        owner: { id: '123456789012345678907890' } as IUser,
-    };
-
-    const mockPlace2 = {
-        id: '6389ba90ee3e6a9b94faa5a7',
-        city: 'jujuy',
-        description: 'En el norte Argentino',
-        mustVisit: '',
-        img: '',
-        category: 'mountain' as Category,
-        userFav: '',
-        owner: { id: '123456789012345678907890' } as IUser,
-    };
-
     const mockUser = {
         id: '123456789012345678907890',
         name: 'Sergio',

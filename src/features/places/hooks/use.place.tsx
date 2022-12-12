@@ -1,6 +1,10 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../../../infrastructure/store/store';
+import {
+    addCreatedActionCreator,
+    deleteCreatedActionCreator,
+} from '../../users/reducer/user.action.creator';
 import { IPlace, IProtoPlace } from '../entities/places';
 import * as ac from '../reducer/place.action.creator';
 import { PlacesRepo } from '../services/places.repo';
@@ -19,7 +23,8 @@ export const usePlaces = () => {
     const handleAdd = (newPlace: IProtoPlace) => {
         apiPlaces
             .create(newPlace)
-            .then((place) => dispatcher(ac.addActionCreator(place)));
+            .then((place) => dispatcher(ac.addActionCreator(place)))
+            .then(() => dispatcher(addCreatedActionCreator(newPlace)));
     };
 
     const handleUpdate = (updatedPlace: IProtoPlace) => {
@@ -31,7 +36,8 @@ export const usePlaces = () => {
     const handleDelete = (place: IPlace) => {
         apiPlaces
             .delete(place.id)
-            .then(() => dispatcher(ac.deleteActionCreator(place)));
+            .then(() => dispatcher(ac.deleteActionCreator(place)))
+            .then(() => dispatcher(deleteCreatedActionCreator(place)));
     };
 
     return {

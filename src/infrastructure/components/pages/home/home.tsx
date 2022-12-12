@@ -7,7 +7,9 @@ export function HomePage() {
 
     return (
         <>
-            <h2 className={styles.title}>Todos los destinos</h2>
+            <div className={styles.title__container}>
+                <h2 className={styles.title}>Todos los destinos</h2>
+            </div>
             <PlacesList item={places}></PlacesList>
         </>
     );

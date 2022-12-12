@@ -3,51 +3,14 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import { MemoryRouter as Router } from 'react-router-dom';
+import { mockAppStore } from '../../../../infrastructure/mocks/mocks';
 import { rootState } from '../../../../infrastructure/store/store';
-import { Category, IPlace } from '../../../places/entities/places';
 import { IUser } from '../../entities/users';
 import { userReducer } from '../../reducer/user.reducer';
 import { Favorites } from './favorites';
 
 describe('Given Favorites component', () => {
     describe('When we render the component', () => {
-        const mockPlace: IPlace = {
-            id: '6389bb90ed3e6a5b94faa5a9',
-            city: 'tucuman',
-            description: 'En el norte Argentino',
-            mustVisit: '',
-            img: '',
-            category: 'mountain' as Category,
-            userFav: '',
-            owner: { id: '123456789012345678907890' } as IUser,
-        };
-
-        const mockUser: IUser = {
-            id: '123456789012345678907890',
-            name: 'Sergio',
-            email: 'sergio@gmil.com',
-            password: 'testingLove',
-            favPlaces: [mockPlace],
-            createdPlaces: [],
-            img: '',
-        };
-
-        const preloadState: Partial<rootState> = {
-            users: {
-                isLogged: true,
-                isLogging: false,
-                user: mockUser,
-                token: '',
-            },
-        };
-
-        const mockAppStore = configureStore({
-            reducer: {
-                users: userReducer,
-            },
-            preloadedState: preloadState,
-        });
-
         test('Then it should display the favorites list', () => {
             render(
                 <>

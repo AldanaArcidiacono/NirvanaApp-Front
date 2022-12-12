@@ -10,13 +10,14 @@
     display: flex;
     color: #FFFCF2;
     list-style: none;
-    font-family: 'Poppins', sans-serif;
     margin-inline-end: 0.5rem;
 }
 
-.menu__link {
+.button__link {
+    font-family: 'Poppins', sans-serif;
     color: #FFFCF2;
     text-decoration: none;
+    list-style: none;
 }
 
 .menu__nav {

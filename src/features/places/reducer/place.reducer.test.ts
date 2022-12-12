@@ -1,20 +1,9 @@
-import { IUser } from '../../users/entities/users';
-import { Category, IPlace } from '../entities/places';
+import { mockPlace } from '../../../infrastructure/mocks/mocks';
+import { IPlace } from '../entities/places';
 import { actionTypes } from './place.action.types';
 import { placesReducer } from './place.reducer';
 
 describe('Given the placesReducer()', () => {
-    const mockPlace = {
-        id: '6389bb90ed3e6a5b94faa5a9',
-        city: 'tucuman',
-        description: 'En el norte Argentino',
-        mustVisit: '',
-        img: '',
-        category: 'mountain' as Category,
-        userFav: '',
-        owner: { id: '638785e04ddf430eef1fcf6d' } as IUser,
-    };
-
     let action: { type: string; payload: unknown };
     let state: Array<IPlace>;
 

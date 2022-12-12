@@ -1,53 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit';
 import { renderHook } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { rootState } from '../../../infrastructure/store/store';
-import { Category, IPlace } from '../../places/entities/places';
+import {
+    mockAppStore,
+    mockPlace,
+    mockUser,
+} from '../../../infrastructure/mocks/mocks';
+import { IPlace } from '../../places/entities/places';
 import { IProtoUser, IUser } from '../entities/users';
-import { userReducer } from '../reducer/user.reducer';
 import { UserRepo } from '../services/user.repo';
 import { useUsers } from './use.user';
 
 jest.mock('../services/user.repo');
 
 describe('Given the hook useUsers()', () => {
-    const mockUser: IUser = {
-        id: '123456789012345678907890',
-        name: 'Sergio',
-        email: 'sergio@gmil.com',
-        password: 'testingLove',
-        favPlaces: [],
-        createdPlaces: [],
-        img: '',
-    };
-
-    const mockPlace: IPlace = {
-        id: '6389bb90ed3e6a5b94faa5a9',
-        city: 'tucuman',
-        description: 'En el norte Argentino',
-        mustVisit: '',
-        img: '',
-        category: 'mountain' as Category,
-        userFav: '',
-        owner: { id: '123456789012345678907890' } as IUser,
-    };
-
-    const preloadState: Partial<rootState> = {
-        users: {
-            isLogged: true,
-            isLogging: false,
-            user: mockUser,
-            token: '',
-        },
-    };
-
-    const mockAppStore = configureStore({
-        reducer: {
-            users: userReducer,
-        },
-        preloadedState: preloadState,
-    });
-
     let result: {
         current: {
             users: {

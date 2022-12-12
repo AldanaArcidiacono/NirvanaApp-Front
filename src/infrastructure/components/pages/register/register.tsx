@@ -1,19 +1,23 @@
 import { SyntheticEvent, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserRepo } from '../../../../features/users/services/user.repo';
 
 type formData = {
     name: string;
     email: string;
+    img: string;
     password: string;
     repeatPasswd: string;
 };
 
 export function Register() {
+    const navigate = useNavigate();
     const userRepo = new UserRepo();
 
     const initialState: formData = {
         name: '',
         email: '',
+        img: '',
         password: '',
         repeatPasswd: '',
     };
@@ -27,6 +31,7 @@ export function Register() {
     const handleSubmit = async (ev: SyntheticEvent) => {
         ev.preventDefault();
         await userRepo.register(formState);
+        navigate('/login');
     };
 
     return (
@@ -51,6 +56,14 @@ export function Register() {
                         required
                     />
                     <input
+                        type="text"
+                        name="img"
+                        placeholder="Foto de perfil"
+                        value={formState.img}
+                        onInput={handleInput}
+                        required
+                    />
+                    <input
                         type="password"
                         name="password"
                         placeholder="Contraseña"
@@ -68,7 +81,10 @@ export function Register() {
                     />
                     <button type="submit">Continuar</button>
                 </form>
-                <p>Ya tienes una cuenta? Para iniciar sesión haz click aquí</p>
+                <p>
+                    Ya tienes una cuenta? Para iniciar sesión{' '}
+                    <Link to={'/login'}>haz click aquí</Link>
+                </p>
             </section>
         </>
     );
