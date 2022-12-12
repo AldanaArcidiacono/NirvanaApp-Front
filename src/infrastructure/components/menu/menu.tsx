@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
+import { useUsers } from '../../../features/users/hooks/use.user';
+import { LoginBtn } from './login.btn/login.btn';
+import { LogoutBtn } from './logout.btn/logout.btn';
 import styles from './menu.module.css';
 
 export function Menu() {
+    const { users } = useUsers();
+
     const menuOptions = [
         { id: '1', path: 'home', label: 'Inicio' },
         { id: '2', path: 'profile', label: 'Mi Perfil' },
         { id: '3', path: 'new-place', label: 'Agrega un viaje' },
-        { id: '5', path: 'login', label: 'Login' },
     ];
 
     return (
@@ -19,6 +23,11 @@ export function Menu() {
                         </Link>
                     </li>
                 ))}
+                {!users.isLogged ? (
+                    <LoginBtn></LoginBtn>
+                ) : (
+                    <LogoutBtn></LogoutBtn>
+                )}
             </ul>
         </nav>
     );

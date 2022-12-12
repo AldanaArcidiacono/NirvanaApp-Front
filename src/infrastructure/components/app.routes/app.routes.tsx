@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { DetailsCreatedPlaces } from '../../../features/places/pages/details.created.place/details.created.places';
 import { Details } from '../../../features/places/pages/details/details';
 import { NewPlace } from '../../../features/places/pages/new.place/new.place';
 import { Profile } from '../../../features/users/pages/profile/profile';
@@ -19,6 +20,13 @@ export function AppRoutes() {
             <Route path="/details">
                 <Route index element={<HomePage></HomePage>}></Route>
                 <Route path=":id" element={<Details></Details>}></Route>
+            </Route>
+            <Route path="/details-created-place/">
+                <Route index element={<HomePage></HomePage>}></Route>
+                <Route
+                    path=":id"
+                    element={<DetailsCreatedPlaces></DetailsCreatedPlaces>}
+                ></Route>
             </Route>
             <Route path="" element={<HomePage />}></Route>
             <Route path="*" element={<h1>No se encontró la ruta</h1>}></Route>
