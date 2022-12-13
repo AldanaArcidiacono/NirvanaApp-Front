@@ -29,9 +29,9 @@ export function Register() {
         setFormState({ ...formState, [info.name]: info.value });
     };
 
-    const handleSubmit = async (ev: SyntheticEvent) => {
+    const handleSubmit = (ev: SyntheticEvent) => {
         ev.preventDefault();
-        await userRepo.register(formState);
+        userRepo.register(formState);
         navigate('/login');
     };
 
