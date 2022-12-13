@@ -33,7 +33,7 @@ export function DetailsCreatedPlaces() {
         <>
             <section>
                 <h3>{details.city}</h3>
-                <button onClick={() => handleUpdate(details)}>EditPlace</button>
+                <button>EditPlace</button>
                 <img
                     src={details.img}
                     alt={'Image of ' + details.city}

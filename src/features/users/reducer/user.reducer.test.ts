@@ -107,6 +107,21 @@ describe('Given the usersReducer()', () => {
         });
     });
 
+    describe('When the action is ADDCREATED', () => {
+        test('Then the return state should include the updated action payload', () => {
+            action = {
+                type: actionTypes.addFav,
+                payload: mockPlace,
+            };
+            state = {
+                ...state,
+                user: mockUser,
+            };
+            const result = userReducer(state, action);
+            expect(result.user?.favPlaces).toEqual([mockPlace2, mockPlace]);
+        });
+    });
+
     describe('When the action type is any other', () => {
         test('Then the returned state should not include the action payload', () => {
             action = {

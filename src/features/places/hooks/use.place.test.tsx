@@ -1,7 +1,10 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { mockPlace, mockUser } from '../../../infrastructure/mocks/mocks';
-import { appStore } from '../../../infrastructure/store/store';
+import {
+    mockAppStore,
+    mockPlace,
+    mockUser,
+} from '../../../infrastructure/mocks/mocks';
 import { IUser } from '../../users/entities/users';
 import { Category, IPlace, IProtoPlace } from '../entities/places';
 import { PlacesRepo } from '../services/places.repo';
@@ -37,44 +40,40 @@ describe('Given the hook usePlace()', () => {
         PlacesRepo.prototype.delete = jest.fn().mockResolvedValue(mockPlace);
 
         const wrapper = ({ children }: { children: JSX.Element }) => (
-            <Provider store={appStore}>{children}</Provider>
+            <Provider store={mockAppStore}>{children}</Provider>
         );
         ({ result } = renderHook(() => usePlaces(), { wrapper }));
     });
 
-    // describe('When we use the handleAdd(),', () => {
-    //     test('Then it should return mockPlace and have been called', async () => {
-    //         await waitFor(() => {
-    //             result.current.handleAdd(mockPlace);
-    //             expect(result.current.places.at(-1)).toEqual(mockPlace);
-    //         });
-    //         await waitFor(() => {
-    //             expect(PlacesRepo.prototype.create).toHaveBeenCalled();
-    //         });
-    //     });
-    // });
-
-    describe.only('When we use the handleUpdate(),', () => {
+    describe('When we use the handleAdd(),', () => {
         test('Then it should return mockPlace and have been called', async () => {
             await waitFor(() => {
-                result.current.handleUpdate(mockPlaceUpdated);
-                expect(result.current.places.at(-1)).toEqual(mockPlace);
+                result.current.handleAdd(mockPlace);
             });
-            await waitFor(() => {
-                expect(PlacesRepo.prototype.update).toHaveBeenCalled();
-            });
+            expect(result.current.places.at(-1)).toEqual(mockPlace);
+            //await waitFor(() => {
+            expect(PlacesRepo.prototype.create).toHaveBeenCalled();
+            //});
         });
     });
 
-    // describe('When we use the handleDelete(),', () => {
-    //     test('Then it should return mockPlace and have been called', async () => {
-    //         await waitFor(() => {
-    //             result.current.handleDelete(mockPlace);
-    //             expect(result.current.places).toEqual([]);
-    //         });
-    //         await waitFor(() => {
-    //             expect(PlacesRepo.prototype.delete).toHaveBeenCalled();
-    //         });
-    //     });
-    // });
+    describe('When we use the handleUpdate(),', () => {
+        test('Then it should return mockPlace and have been called', async () => {
+            await waitFor(() => {
+                result.current.handleUpdate(mockPlaceUpdated);
+            });
+            expect(result.current.places.at(-1)).toEqual(mockPlace);
+            expect(PlacesRepo.prototype.update).toHaveBeenCalled();
+        });
+    });
+
+    describe('When we use the handleDelete(),', () => {
+        test('Then it should return mockPlace and have been called', async () => {
+            await waitFor(() => {
+                result.current.handleDelete(mockPlace);
+            });
+            expect(result.current.places).toEqual([]);
+            expect(PlacesRepo.prototype.delete).toHaveBeenCalled();
+        });
+    });
 });

@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { Category, IPlace } from '../../features/places/entities/places';
+import { placesReducer } from '../../features/places/reducer/place.reducer';
 import { IUser } from '../../features/users/entities/users';
 import { userReducer } from '../../features/users/reducer/user.reducer';
 import { rootState } from '../store/store';
@@ -51,7 +52,7 @@ export const preloadState: Partial<rootState> = {
         isLogged: true,
         isLogging: false,
         user: mockUser,
-        token: '',
+        token: 'token',
     },
 };
 
@@ -60,13 +61,22 @@ export const preloadState2: Partial<rootState> = {
         isLogged: true,
         isLogging: false,
         user: mockUser2,
-        token: '',
+        token: 'token',
     },
 };
 
 export const mockAppStore = configureStore({
     reducer: {
         users: userReducer,
+        places: placesReducer,
+    },
+    preloadedState: preloadState,
+});
+
+export const mockAppStore2 = configureStore({
+    reducer: {
+        users: userReducer,
+        places: placesReducer,
     },
     preloadedState: preloadState,
 });

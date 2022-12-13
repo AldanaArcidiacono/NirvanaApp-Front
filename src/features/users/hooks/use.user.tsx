@@ -37,6 +37,7 @@ export const useUsers = () => {
     };
 
     const handleDeleteFav = (place: IPlace) => {
+        console.log(users, place);
         apiUsers
             .deleteFav(place.id)
             .then(() => dispatcher(ac.deleteFavActionCreator(place)));
