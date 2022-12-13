@@ -41,6 +41,7 @@ describe('Given the hook useUsers()', () => {
             );
             ({ result } = renderHook(() => useUsers(), { wrapper }));
         });
+
         test('Then it should return mockUser and have been called', async () => {
             result.current.handleLogin({
                 name: mockUser.name,
