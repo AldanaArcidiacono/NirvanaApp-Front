@@ -62,8 +62,8 @@ export class PlacesRepo implements PRepo<IPlace> {
             });
     }
 
-    update(updatedPlace: Partial<IPlace>): Promise<IPlace> {
-        return fetch(`${this.url}/places/${updatedPlace.id}`, {
+    update(updatedPlace: Partial<IPlace>, id: string): Promise<IPlace> {
+        return fetch(`${this.url}/places/${id}`, {
             method: 'PATCH',
             body: JSON.stringify(updatedPlace),
             headers: {
