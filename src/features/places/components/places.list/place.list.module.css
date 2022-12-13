@@ -1,3 +1,7 @@
 .list__ul {
     list-style: none;
 }
+
+.list__link {
+    text-decoration: none;
+}

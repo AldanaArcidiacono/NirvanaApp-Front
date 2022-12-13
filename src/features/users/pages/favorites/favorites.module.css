@@ -1,0 +1,56 @@
+.title__container_fav {
+    background-color: #A4A0FF;
+    height: 3rem;
+    width: max-content;
+    margin-block-start: 1.5rem;
+    margin-block-end: 1rem;
+}
+
+.title_fav {
+    padding-inline: 1rem;
+    padding-block-start: 0.5rem;
+    color: #FFFCF2;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 32px;
+}
+
+.fav__list {
+    text-decoration: none;
+}
+
+.fav__ul {
+    list-style: none;
+    /*display: flex;
+    flex-wrap: wrap;
+    flex-direction: row; */
+}
+
+.fav__city {
+    color: #FFFCF2;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    position: absolute;
+    padding-block-start: 11.5rem;
+    padding-inline-start: 2rem;
+}
+
+.fav__img {
+    border-radius: 15px;
+    width: 170px;
+    height: 215px;
+    margin: 1rem;
+}
+
+.no_mg {
+    color: #FFFCF2;
+    position: absolute;
+    padding-block-start: 11.5rem;
+    padding-inline-start: 8.5rem;
+
+}
+
+.fav__delete {
+    height: 1rem;
+}

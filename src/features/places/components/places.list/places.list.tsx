@@ -9,7 +9,11 @@ export function PlacesList({ item }: { item: Array<IPlace> }) {
             <ul className={styles.list__ul}>
                 {item.map((item: IPlace) => (
                     <li className={styles.list__li} key={item.id}>
-                        <Link to={'/details/' + item.id} key={item.id}>
+                        <Link
+                            to={'/details/' + item.id}
+                            key={item.id}
+                            className={styles.list__link}
+                        >
                             <PlacesItem item={item} />
                         </Link>
                     </li>
