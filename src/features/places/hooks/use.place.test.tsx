@@ -28,7 +28,7 @@ describe('Given the hook usePlace()', () => {
         current: {
             places: IPlace[];
             handleAdd: (newPlace: IProtoPlace) => void;
-            handleUpdate: (updatePlace: IPlace) => void;
+            handleUpdate: (updatePlace: IPlace, id: string) => void;
             handleDelete: (deletePlace: IPlace) => void;
         };
     };
@@ -60,7 +60,7 @@ describe('Given the hook usePlace()', () => {
     describe('When we use the handleUpdate(),', () => {
         test('Then it should return mockPlace and have been called', async () => {
             await waitFor(() => {
-                result.current.handleUpdate(mockPlaceUpdated);
+                result.current.handleUpdate(mockPlaceUpdated, mockPlace.id);
             });
             expect(result.current.places.at(-1)).toEqual(mockPlace);
             expect(PlacesRepo.prototype.update).toHaveBeenCalled();

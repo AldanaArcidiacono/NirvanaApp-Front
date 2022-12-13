@@ -9,7 +9,7 @@ const mockNavigate = jest.fn();
 jest.mock('../../../../features/users/services/user.repo');
 
 jest.mock('react-router-dom', () => ({
-    ...(jest.requireActual('react-router-dom') as any),
+    ...(jest.requireActual('react-router-dom') as jest.Mock),
     useNavigate: () => mockNavigate,
 }));
 describe('Given Register component', () => {

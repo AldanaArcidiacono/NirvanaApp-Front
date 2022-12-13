@@ -107,8 +107,8 @@ describe('Given the usersReducer()', () => {
         });
     });
 
-    describe('When the action is ADDCREATED', () => {
-        test('Then the return state should include the updated action payload', () => {
+    describe('When ADDCREATED is the dispatched action', () => {
+        test('Then the state should have the new action payload', () => {
             action = {
                 type: actionTypes.addFav,
                 payload: mockPlace,
