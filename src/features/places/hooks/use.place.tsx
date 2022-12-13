@@ -27,9 +27,9 @@ export const usePlaces = () => {
             .then(() => dispatcher(addCreatedActionCreator(newPlace)));
     };
 
-    const handleUpdate = (updatedPlace: IProtoPlace) => {
+    const handleUpdate = (updatedPlace: IProtoPlace, id: string) => {
         apiPlaces
-            .update(updatedPlace)
+            .update(updatedPlace, id)
             .then((place) => dispatcher(ac.updateActionCreator(place)));
     };
 

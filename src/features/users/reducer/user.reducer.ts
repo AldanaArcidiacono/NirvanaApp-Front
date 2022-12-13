@@ -65,6 +65,7 @@ export const userReducer = createReducer(initialUserState, (builder) => {
             } as IUser,
         };
     });
+
     builder.addCase(ac.deleteCreatedActionCreator, (state, action) => ({
         ...state,
         user: {

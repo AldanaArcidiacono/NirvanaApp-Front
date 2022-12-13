@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { PlacesRepo } from '../../services/places.repo';
 import { Category } from '../../entities/places';
 
@@ -31,7 +31,7 @@ export function DetailsCreatedPlaces() {
         <>
             <section>
                 <h3>{details.city}</h3>
-                <button>EditPlace</button>
+                <Link to={'/update-place/' + details.id}>EditPlace</Link>
                 <img
                     src={details.img}
                     alt={'Image of ' + details.city}
