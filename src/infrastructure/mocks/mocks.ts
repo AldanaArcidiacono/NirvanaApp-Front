@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { Category, IPlace } from '../../features/places/entities/places';
+import { placesReducer } from '../../features/places/reducer/place.reducer';
 import { IUser } from '../../features/users/entities/users';
 import { userReducer } from '../../features/users/reducer/user.reducer';
 import { rootState } from '../store/store';
@@ -46,12 +47,22 @@ export const mockUser2: IUser = {
     img: '',
 };
 
+export const mockUser3 = {
+    id: '123456789009876543210987',
+    name: 'Sara',
+    email: 'sara@gmail.com',
+    password: 'peloazul',
+    favPlaces: [],
+    createdPlaces: [{ places: mockPlace }],
+    img: '',
+};
+
 export const preloadState: Partial<rootState> = {
     users: {
         isLogged: true,
         isLogging: false,
         user: mockUser,
-        token: '',
+        token: 'token',
     },
 };
 
@@ -60,13 +71,30 @@ export const preloadState2: Partial<rootState> = {
         isLogged: true,
         isLogging: false,
         user: mockUser2,
-        token: '',
+        token: 'token',
     },
 };
 
 export const mockAppStore = configureStore({
     reducer: {
         users: userReducer,
+        places: placesReducer,
+    },
+    preloadedState: preloadState,
+});
+
+export const mockAppStore2 = configureStore({
+    reducer: {
+        users: userReducer,
+        places: placesReducer,
+    },
+    preloadedState: preloadState,
+});
+
+export const mockAppStore3 = configureStore({
+    reducer: {
+        users: userReducer,
+        places: placesReducer,
     },
     preloadedState: preloadState,
 });

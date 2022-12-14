@@ -47,7 +47,7 @@ export class PlacesRepo implements PRepo<IPlace> {
             });
     }
 
-    create(newPlace: Partial<IPlace>): Promise<IPlace> {
+    create(newPlace: Partial<IPlace>): Promise<{ place: IPlace }> {
         return fetch(`${this.url}/`, {
             method: 'POST',
             body: JSON.stringify(newPlace),
@@ -62,8 +62,8 @@ export class PlacesRepo implements PRepo<IPlace> {
             });
     }
 
-    update(updatedPlace: Partial<IPlace>): Promise<IPlace> {
-        return fetch(`${this.url}/places/${updatedPlace.id}`, {
+    update(updatedPlace: Partial<IPlace>, id: string): Promise<IPlace> {
+        return fetch(`${this.url}/places/${id}`, {
             method: 'PATCH',
             body: JSON.stringify(updatedPlace),
             headers: {

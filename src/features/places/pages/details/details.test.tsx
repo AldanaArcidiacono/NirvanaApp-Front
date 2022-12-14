@@ -2,12 +2,18 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import { MemoryRouter as Router } from 'react-router-dom';
-import { mockAppStore } from '../../../../infrastructure/mocks/mocks';
+import {
+    mockAppStore,
+    mockPlace,
+} from '../../../../infrastructure/mocks/mocks';
+import { PlacesRepo } from '../../services/places.repo';
 import { Details } from './details';
 
 describe('Given Details component', () => {
     describe('When we render the component', () => {
         test('Then it should display the details of the place', () => {
+            PlacesRepo.prototype.get = jest.fn().mockResolvedValue(mockPlace);
+
             render(
                 <>
                     <Provider store={mockAppStore}>

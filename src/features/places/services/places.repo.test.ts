@@ -121,7 +121,7 @@ describe('Given PlacesRepo', () => {
                 json: jest.fn().mockResolvedValue(mockPlace),
             });
 
-            const result = await service.update(updatedMock);
+            const result = await service.update(updatedMock, mockPlace.id);
             expect(fetch).toHaveBeenCalled();
             expect(result).toEqual(mockPlace);
         });
@@ -132,7 +132,7 @@ describe('Given PlacesRepo', () => {
                 status: 404,
                 statusText: 'error',
             });
-            await service.update(updatedMock);
+            await service.update(updatedMock, mockPlace.id);
             expect(fetch).toHaveBeenCalled();
             expect(error).toBeInstanceOf(Error);
         });

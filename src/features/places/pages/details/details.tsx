@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { useUsers } from '../../../users/hooks/use.user';
 import { IPlace } from '../../entities/places';
 import { PlacesRepo } from '../../services/places.repo';
@@ -35,7 +36,12 @@ export function Details() {
             <h2>DETALLES</h2>
             <section>
                 <p>{details.city}</p>
-                <button onClick={() => handleAddFav(details as IPlace)}>
+                <button
+                    onClick={() => {
+                        handleAddFav(details as IPlace);
+                        Swal.fire('Añadido a favoritos!');
+                    }}
+                >
                     AddFav
                 </button>
                 <img

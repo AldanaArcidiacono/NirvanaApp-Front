@@ -8,12 +8,12 @@
 }
 
 .h3 {
-    margin: 0.5rem;
     color: #FFFCF2;
     font-family: 'Playfair Display', serif;
     font-weight: 500;
     font-size: 1rem;
     line-height: 32px;
+    margin-inline-start: 0.5rem;
 }
 
 .footer__img {
@@ -29,11 +29,16 @@
 }
 
 .div__logo {
+    display: flex;
     align-items: center;
+    margin-block-start: 2rem;
 }
 
 .div__address {
     color: #FFFCF2;
     font-size: 0.8rem;
     height: 1rem;
+    width: 140px;
+    margin-inline-start: 9rem;
+    margin-block-start: 1rem;
 }

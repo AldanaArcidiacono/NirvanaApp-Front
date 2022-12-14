@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { PlacesRepo } from '../../services/places.repo';
-import { usePlaces } from '../../hooks/use.place';
 import { Category } from '../../entities/places';
 
 export function DetailsCreatedPlaces() {
@@ -15,7 +14,6 @@ export function DetailsCreatedPlaces() {
     };
     const [details, setDetails] = useState(initialState);
 
-    const { handleUpdate } = usePlaces();
     const { id } = useParams();
     const placeRepo = new PlacesRepo();
 
@@ -33,7 +31,7 @@ export function DetailsCreatedPlaces() {
         <>
             <section>
                 <h3>{details.city}</h3>
-                <button onClick={() => handleUpdate(details)}>EditPlace</button>
+                <Link to={'/update-place/' + details.id}>EditPlace</Link>
                 <img
                     src={details.img}
                     alt={'Image of ' + details.city}

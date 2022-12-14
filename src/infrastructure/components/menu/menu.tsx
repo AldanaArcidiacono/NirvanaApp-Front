@@ -7,16 +7,21 @@ import styles from './menu.module.css';
 export function Menu() {
     const { users } = useUsers();
 
-    const menuOptions = [
-        { id: '1', path: 'home', label: 'Inicio' },
-        { id: '2', path: 'profile', label: 'Mi Perfil' },
-        { id: '3', path: 'new-place', label: 'Agrega un viaje' },
+    type MenuItems = {
+        id: string;
+        path: string;
+        label: string;
+    };
+
+    const items: Array<MenuItems> = [
+        { id: '1', path: 'home', label: 'Home' },
+        { id: '2', path: 'profile', label: 'Perfil' },
     ];
 
     return (
         <nav className={styles.menu__nav}>
             <ul className={styles.menu__ul}>
-                {menuOptions.map((item) => (
+                {items.map((item) => (
                     <li key={item.id} className={styles.menu__list}>
                         <Link to={item.path} className={styles.menu__link}>
                             {item.label}
@@ -24,9 +29,13 @@ export function Menu() {
                     </li>
                 ))}
                 {!users.isLogged ? (
-                    <LoginBtn></LoginBtn>
+                    <li className={styles.menu__list}>
+                        <LoginBtn></LoginBtn>
+                    </li>
                 ) : (
-                    <LogoutBtn></LogoutBtn>
+                    <li className={styles.menu__list}>
+                        <LogoutBtn></LogoutBtn>
+                    </li>
                 )}
             </ul>
         </nav>
