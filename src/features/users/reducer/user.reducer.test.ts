@@ -118,7 +118,7 @@ describe('Given the usersReducer()', () => {
                 user: mockUser,
             };
             const result = userReducer(state, action);
-            expect(result.user?.createdPlaces).toEqual([mockPlace2, mockPlace]);
+            expect(result.user?.createdPlaces).toEqual([mockPlace]);
         });
     });
 
