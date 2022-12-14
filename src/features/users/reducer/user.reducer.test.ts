@@ -77,60 +77,54 @@ describe('Given the usersReducer()', () => {
         });
     });
 
-    describe('When we use the action ADDFAV', () => {
-        test('Then the return state should include the updated action payload', () => {
+    describe('When we use the action ADDFAV and DELETEFAV', () => {
+        beforeEach(() => {
+            state = {
+                ...state,
+                user: mockUser,
+            };
+        });
+        test('Then ADDFAV the return state should include the updated action payload', () => {
             action = {
                 type: actionTypes.addFav,
                 payload: mockPlace,
             };
-            state = {
-                ...state,
-                user: mockUser,
-            };
+
             const result = userReducer(state, action);
             expect(result.user?.favPlaces).toEqual([mockPlace2, mockPlace]);
         });
-    });
 
-    describe('When the action is DELETEFAV', () => {
-        test('Then the return state should include the updated action payload', () => {
+        test('Then DELETEFAV the return state should have the new action payload', () => {
             action = {
                 type: actionTypes.deleteFav,
                 payload: mockPlace2,
-            };
-            state = {
-                ...state,
-                user: mockUser,
             };
             const result = userReducer(state, action);
             expect(result.user?.favPlaces).toEqual([]);
         });
     });
 
-    describe('When ADDCREATED is the dispatched action', () => {
-        test('Then the state should have the new action payload', () => {
+    describe('When ADDCREATED and DELETECREATED is the dispatched action', () => {
+        beforeEach(() => {
+            state = {
+                ...state,
+                user: mockUser,
+            };
+        });
+        test('Then ADDCREATED the state should have the new action payload', () => {
             action = {
                 type: actionTypes.addCreated,
                 payload: mockPlace,
             };
-            state = {
-                ...state,
-                user: mockUser,
-            };
+
             const result = userReducer(state, action);
             expect(result.user?.createdPlaces).toEqual([mockPlace]);
         });
-    });
 
-    describe('When we dispatched the DELETECREATED action', () => {
-        test('Then the return state should include the action payload updated', () => {
+        test('Then DELETECREATED the return state should include the action payload updated', () => {
             action = {
                 type: actionTypes.deleteCreated,
                 payload: mockPlace2,
-            };
-            state = {
-                ...state,
-                user: mockUser,
             };
             const result = userReducer(state, action);
             expect(result.user?.createdPlaces).toEqual([]);
