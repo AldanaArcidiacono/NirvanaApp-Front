@@ -5,6 +5,7 @@ import { NewPlace } from '../../../features/places/pages/new.place/new.place';
 import { Profile } from '../../../features/users/pages/profile/profile';
 import { HomePage } from '../pages/home/home';
 import { Login } from '../pages/login/login';
+import { MustBeLog } from '../pages/must.be.log/must.be.log';
 import { Register } from '../pages/register/register';
 import { PrivateRoute } from './private.routes/private.routes';
 
@@ -48,12 +49,7 @@ export function AppRoutes() {
                 <Route path=":id" element={<DetailsCreatedPlaces />}></Route>
             </Route>
 
-            <Route
-                path="/no-log"
-                element={
-                    <h1>Debes estar loggeado para ingresar a esta página</h1>
-                }
-            ></Route>
+            <Route path="/must-be-log" element={<MustBeLog />}></Route>
             <Route path="" element={<HomePage />}></Route>
             <Route
                 path="*"
