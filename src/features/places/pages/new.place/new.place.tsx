@@ -1,7 +1,9 @@
 import { SyntheticEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { Category, IProtoPlace } from '../../entities/places';
 import { usePlaces } from '../../hooks/use.place';
+import styles from './new.place.module.css';
 
 type formPlaceData = {
     city: string;
@@ -42,10 +44,18 @@ export function NewPlace() {
 
     return (
         <>
-            <section>
-                <h3>Agrega un viaje!</h3>
-                <form onSubmit={handlePlaceSubmit}>
+            <section className={styles.new_place__section}>
+                <div className={styles.new_place__title_container}>
+                    <h3 className={styles.new_place__title}>
+                        Agrega un viaje!
+                    </h3>
+                </div>
+                <form
+                    onSubmit={handlePlaceSubmit}
+                    className={styles.new_place__form}
+                >
                     <input
+                        className={styles.new_place__input}
                         type="text"
                         name="city"
                         placeholder="Ciudad"
@@ -55,6 +65,7 @@ export function NewPlace() {
                         required
                     />
                     <input
+                        className={styles.new_place__input}
                         type="text"
                         name="img"
                         placeholder="Pon una imagen"
@@ -64,6 +75,7 @@ export function NewPlace() {
                         required
                     />
                     <input
+                        className={styles.new_place__input}
                         type="text"
                         name="description"
                         placeholder="Descripción"
@@ -72,16 +84,30 @@ export function NewPlace() {
                         required
                     />
                     <input
+                        className={styles.new_place__input}
                         type="text"
                         name="mustVisit"
-                        placeholder="Lugares que debes visitar"
+                        placeholder="Lugares a visitar"
                         value={formState.mustVisit}
                         onInput={handlePlaceInput}
                         required
                     />
-                    <button type="submit">Continuar</button>
-                    <button>
-                        <Link to={'/home'}>Salir</Link>
+                    <button
+                        type="submit"
+                        className={styles.new_place__button}
+                        onClick={() => {
+                            Swal.fire('Se ha creado tu viaje!');
+                        }}
+                    >
+                        Continuar
+                    </button>
+                    <button className={styles.new_place__cancel}>
+                        <Link
+                            to={'/home'}
+                            className={styles.new_place__cancel_link}
+                        >
+                            Salir
+                        </Link>
                     </button>
                 </form>
             </section>

@@ -11,7 +11,7 @@
 
 .form {
     display: flex;
-    margin-block-start: 2.5rem;
+    margin-block-start: 3.5rem;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -30,21 +30,21 @@
     font-size: 1.1rem;
     padding-inline: 1.5rem;
     padding-block: 0.7rem;
-    margin-block: 1.5rem;
+    margin-block: 2rem;
 }
 
 .login__text {
     color: #A4A0FF;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.8rem;
+    font-size: 1rem;
     text-align: center;
 }
 
 .login__link_text {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #A4A0FF;
 }
 
 .login__section {
-    min-height: 71.4vh;
+    min-height: 34rem;
 }

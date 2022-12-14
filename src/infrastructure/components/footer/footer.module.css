@@ -5,6 +5,7 @@
     justify-content: space-between;
     flex-direction: column;
     height: 4rem;
+    width: fit-content;
 }
 
 .h3 {
@@ -39,6 +40,7 @@
     font-size: 0.8rem;
     height: 1rem;
     width: 140px;
-    margin-inline-start: 9rem;
+    margin-inline-start: 10.5rem;
+    margin-inline-end: 1rem;
     margin-block-start: 1rem;
 }

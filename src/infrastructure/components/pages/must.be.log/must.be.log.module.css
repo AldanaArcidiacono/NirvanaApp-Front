@@ -1,0 +1,35 @@
+.no_log__container {
+    height: 34.2rem;
+}
+
+.no_log_title__container {
+    height: 10rem;
+    width: 19rem;
+    margin-block: 4rem;
+    margin-inline-start: 3.5rem;
+    background-color: #FFFCF2;
+    border: 0.1rem solid #A4A0FF;
+}
+
+.no_log_title {
+    padding-inline: 1rem;
+    padding-block-start: 0.5rem;
+    color: #A4A0FF;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 32px;
+}
+
+.no_log__text {
+    color: #A4A0FF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.no_log__link {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: #A4A0FF;
+}
