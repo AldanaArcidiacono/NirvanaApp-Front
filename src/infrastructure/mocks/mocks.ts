@@ -47,6 +47,16 @@ export const mockUser2: IUser = {
     img: '',
 };
 
+export const mockUser3 = {
+    id: '123456789009876543210987',
+    name: 'Sara',
+    email: 'sara@gmail.com',
+    password: 'peloazul',
+    favPlaces: [],
+    createdPlaces: [{ places: mockPlace }],
+    img: '',
+};
+
 export const preloadState: Partial<rootState> = {
     users: {
         isLogged: true,
@@ -74,6 +84,14 @@ export const mockAppStore = configureStore({
 });
 
 export const mockAppStore2 = configureStore({
+    reducer: {
+        users: userReducer,
+        places: placesReducer,
+    },
+    preloadedState: preloadState,
+});
+
+export const mockAppStore3 = configureStore({
     reducer: {
         users: userReducer,
         places: placesReducer,
