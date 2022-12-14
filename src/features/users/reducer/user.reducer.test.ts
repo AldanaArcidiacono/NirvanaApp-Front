@@ -110,7 +110,7 @@ describe('Given the usersReducer()', () => {
     describe('When ADDCREATED is the dispatched action', () => {
         test('Then the state should have the new action payload', () => {
             action = {
-                type: actionTypes.addFav,
+                type: actionTypes.addCreated,
                 payload: mockPlace,
             };
             state = {
@@ -118,7 +118,7 @@ describe('Given the usersReducer()', () => {
                 user: mockUser,
             };
             const result = userReducer(state, action);
-            expect(result.user?.favPlaces).toEqual([mockPlace2, mockPlace]);
+            expect(result.user?.createdPlaces).toEqual([mockPlace2, mockPlace]);
         });
     });
 
