@@ -84,7 +84,7 @@ describe('Given the usersReducer()', () => {
                 user: mockUser,
             };
         });
-        test('Then ADDFAV the return state should include the updated action payload', () => {
+        test('Then the return state should include the updated action payload', () => {
             action = {
                 type: actionTypes.addFav,
                 payload: mockPlace,
@@ -94,7 +94,7 @@ describe('Given the usersReducer()', () => {
             expect(result.user?.favPlaces).toEqual([mockPlace2, mockPlace]);
         });
 
-        test('Then DELETEFAV the return state should have the new action payload', () => {
+        test('Then the return state should have the new action payload', () => {
             action = {
                 type: actionTypes.deleteFav,
                 payload: mockPlace2,
@@ -104,27 +104,30 @@ describe('Given the usersReducer()', () => {
         });
     });
 
-    describe('When ADDCREATED and DELETECREATED is the dispatched action', () => {
-        beforeEach(() => {
-            state = {
-                ...state,
-                user: mockUser,
-            };
-        });
-        test('Then ADDCREATED the state should have the new action payload', () => {
+    describe('When ADDCREATED is the dispatched action', () => {
+        test('Then the state should have the new action payload', () => {
             action = {
                 type: actionTypes.addCreated,
                 payload: mockPlace,
             };
-
+            state = {
+                ...state,
+                user: mockUser,
+            };
             const result = userReducer(state, action);
             expect(result.user?.createdPlaces).toEqual([mockPlace]);
         });
+    });
 
-        test('Then DELETECREATED the return state should include the action payload updated', () => {
+    describe('When we dispatched the DELETECREATED action', () => {
+        test('Then the return state should include the action payload updated', () => {
             action = {
                 type: actionTypes.deleteCreated,
                 payload: mockPlace2,
+            };
+            state = {
+                ...state,
+                user: mockUser,
             };
             const result = userReducer(state, action);
             expect(result.user?.createdPlaces).toEqual([]);
