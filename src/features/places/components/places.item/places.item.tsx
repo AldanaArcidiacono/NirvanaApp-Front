@@ -5,7 +5,7 @@ export function PlacesItem({ item }: { item: IPlace }) {
     return (
         <>
             <img
-                src="./assets/location.png"
+                src="./assets/location2.svg"
                 alt="location icon"
                 className={styles.location}
             />
@@ -15,7 +15,6 @@ export function PlacesItem({ item }: { item: IPlace }) {
                 className={styles.list__img}
                 src={item.img}
                 alt={'Image of ' + item.city}
-                height="300"
             />
         </>
     );

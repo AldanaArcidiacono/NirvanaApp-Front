@@ -8,7 +8,7 @@ export function Header() {
             <div className={styles.header__div}>
                 <img
                     className={styles.header__img}
-                    src="./assets/logo.png"
+                    src="./assets/logo2.svg"
                     alt="Nirvana Brand Logo"
                 />
                 <h1 className={styles.h1}>{title}</h1>
