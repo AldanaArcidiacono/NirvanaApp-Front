@@ -5,7 +5,6 @@ import {
     mockPlace,
     mockUser,
 } from '../../../infrastructure/mocks/mocks';
-import { IUser } from '../../users/entities/users';
 import { Category, IPlace, IProtoPlace } from '../entities/places';
 import { PlacesRepo } from '../services/places.repo';
 import { usePlaces } from './use.place';
@@ -21,7 +20,7 @@ describe('Given the hook usePlace()', () => {
         img: '',
         category: 'mountain' as Category,
         userFav: '',
-        owner: mockUser as IUser,
+        owner: mockUser,
     };
 
     let result: {
