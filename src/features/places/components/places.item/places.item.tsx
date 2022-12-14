@@ -15,6 +15,7 @@ export function PlacesItem({ item }: { item: IPlace }) {
                 className={styles.list__img}
                 src={item.img}
                 alt={'Image of ' + item.city}
+                width="290"
             />
         </>
     );

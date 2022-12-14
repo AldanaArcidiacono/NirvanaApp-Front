@@ -10,6 +10,7 @@ export function Header() {
                     className={styles.header__img}
                     src="./assets/logo2.svg"
                     alt="Nirvana Brand Logo"
+                    height="40"
                 />
                 <h1 className={styles.h1}>{title}</h1>
             </div>

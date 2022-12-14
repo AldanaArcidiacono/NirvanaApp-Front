@@ -10,6 +10,7 @@ export function Footer() {
                         className={styles.footer__img}
                         src="./assets/logo2.svg"
                         alt="Nirvana Brand Logo"
+                        height="24"
                     />
                     <h3 className={styles.h3}>{title}</h3>
                 </div>
