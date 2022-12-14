@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { IPlace } from '../../../places/entities/places';
 import { usePlaces } from '../../../places/hooks/use.place';
-import { NewPlace } from '../../../places/pages/new.place/new.place';
 import { IUser } from '../../entities/users';
 import { useUsers } from '../../hooks/use.user';
 import styles from './created.places.module.css';
