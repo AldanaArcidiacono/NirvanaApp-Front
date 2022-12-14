@@ -18,7 +18,6 @@ export const userReducer = createReducer(initialUserState, (builder) => {
         token: null,
     }));
     builder.addCase(ac.loginActionCreator, (state, action) => {
-        //console.log('ACA', action);
         return {
             ...state,
             isLogging: false,
@@ -34,15 +33,13 @@ export const userReducer = createReducer(initialUserState, (builder) => {
         user: null,
         token: null,
     }));
-    builder.addCase(ac.addFavActionCreator, (state, action) => {
-        return {
-            ...state,
-            user: {
-                ...state.user,
-                favPlaces: [...(state.user as IUser).favPlaces, action.payload],
-            } as IUser,
-        };
-    });
+    builder.addCase(ac.addFavActionCreator, (state, action) => ({
+        ...state,
+        user: {
+            ...state.user,
+            favPlaces: [...(state.user as IUser).favPlaces, action.payload],
+        } as IUser,
+    }));
     builder.addCase(ac.deleteFavActionCreator, (state, action) => ({
         ...state,
         user: {
@@ -53,18 +50,16 @@ export const userReducer = createReducer(initialUserState, (builder) => {
         } as IUser,
     }));
 
-    builder.addCase(ac.addCreatedActionCreator, (state, action) => {
-        return {
-            ...state,
-            user: {
-                ...state.user,
-                createdPlaces: [
-                    ...(state.user as IUser).createdPlaces,
-                    action.payload,
-                ],
-            } as IUser,
-        };
-    });
+    builder.addCase(ac.addCreatedActionCreator, (state, action) => ({
+        ...state,
+        user: {
+            ...state.user,
+            createdPlaces: [
+                ...(state.user as IUser).createdPlaces,
+                action.payload,
+            ],
+        } as IUser,
+    }));
 
     builder.addCase(ac.deleteCreatedActionCreator, (state, action) => ({
         ...state,

@@ -21,10 +21,10 @@ export const usePlaces = () => {
     }, [apiPlaces, dispatcher]);
 
     const handleAdd = (newPlace: IProtoPlace) => {
-        apiPlaces
-            .create(newPlace)
-            .then((place) => dispatcher(ac.addActionCreator(place)))
-            .then(() => dispatcher(addCreatedActionCreator(newPlace)));
+        apiPlaces.create(newPlace).then((place) => {
+            dispatcher(ac.addActionCreator(place.place));
+            dispatcher(addCreatedActionCreator(place.place));
+        });
     };
 
     const handleUpdate = (updatedPlace: IProtoPlace, id: string) => {

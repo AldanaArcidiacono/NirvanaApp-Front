@@ -47,7 +47,7 @@ export class PlacesRepo implements PRepo<IPlace> {
             });
     }
 
-    create(newPlace: Partial<IPlace>): Promise<IPlace> {
+    create(newPlace: Partial<IPlace>): Promise<{ place: IPlace }> {
         return fetch(`${this.url}/`, {
             method: 'POST',
             body: JSON.stringify(newPlace),
