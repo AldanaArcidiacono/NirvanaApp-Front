@@ -22,8 +22,8 @@ describe('Given Menu component', () => {
             const element = screen.getByText(/Login/i);
             expect(element).toBeInTheDocument();
         });
-        test('Then the menu should display "Inicio"', () => {
-            const element = screen.getByText(/Inicio/i);
+        test('Then the menu should display "Home"', () => {
+            const element = screen.getByText(/Home/i);
             expect(element).toBeInTheDocument();
         });
     });

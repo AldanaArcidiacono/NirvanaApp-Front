@@ -122,6 +122,21 @@ describe('Given the usersReducer()', () => {
         });
     });
 
+    describe('When DELETECREATED is the dispatched action', () => {
+        test('Then the state should have the new action payload', () => {
+            action = {
+                type: actionTypes.deleteCreated,
+                payload: mockPlace2,
+            };
+            state = {
+                ...state,
+                user: mockUser,
+            };
+            const result = userReducer(state, action);
+            expect(result.user?.createdPlaces).toEqual([]);
+        });
+    });
+
     describe('When the action type is any other', () => {
         test('Then the returned state should not include the action payload', () => {
             action = {

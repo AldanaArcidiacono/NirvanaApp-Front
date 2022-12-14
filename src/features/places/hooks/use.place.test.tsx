@@ -35,7 +35,9 @@ describe('Given the hook usePlace()', () => {
 
     beforeEach(() => {
         PlacesRepo.prototype.getAll = jest.fn().mockResolvedValue([mockPlace]);
-        PlacesRepo.prototype.create = jest.fn().mockResolvedValue(mockPlace);
+        PlacesRepo.prototype.create = jest
+            .fn()
+            .mockResolvedValue({ place: mockPlace });
         PlacesRepo.prototype.update = jest.fn().mockResolvedValue(mockPlace);
         PlacesRepo.prototype.delete = jest.fn().mockResolvedValue(mockPlace);
 
@@ -51,9 +53,7 @@ describe('Given the hook usePlace()', () => {
                 result.current.handleAdd(mockPlace);
             });
             expect(result.current.places.at(-1)).toEqual(mockPlace);
-            //await waitFor(() => {
             expect(PlacesRepo.prototype.create).toHaveBeenCalled();
-            //});
         });
     });
 
