@@ -77,7 +77,7 @@ describe('Given the usersReducer()', () => {
         });
     });
 
-    describe('When the action is ADDFAV', () => {
+    describe('When we use the action ADDFAV', () => {
         test('Then the return state should include the updated action payload', () => {
             action = {
                 type: actionTypes.addFav,
@@ -122,7 +122,7 @@ describe('Given the usersReducer()', () => {
         });
     });
 
-    describe('When DELETECREATED is the dispatched action', () => {
+    describe('When we dispatched the DELETECREATED action', () => {
         test('Then the state should have the new action payload', () => {
             action = {
                 type: actionTypes.deleteCreated,

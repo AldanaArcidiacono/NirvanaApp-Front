@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import { DetailsCreatedPlaces } from '../../../features/places/pages/details.created.place/details.created.places';
 import { Details } from '../../../features/places/pages/details/details';
 import { NewPlace } from '../../../features/places/pages/new.place/new.place';
-//import { UpdatePlace } from '../../../features/places/pages/update.place/update.place';
 import { Profile } from '../../../features/users/pages/profile/profile';
 import { HomePage } from '../pages/home/home';
 import { Login } from '../pages/login/login';
@@ -48,10 +47,7 @@ export function AppRoutes() {
                 <Route index element={<HomePage />}></Route>
                 <Route path=":id" element={<DetailsCreatedPlaces />}></Route>
             </Route>
-            {/* <Route path="/update-place">
-                <Route index element={<HomePage />}></Route>
-                <Route path=":id" element={<UpdatePlace />}></Route>
-            </Route> */}
+
             <Route
                 path="/no-log"
                 element={
