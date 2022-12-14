@@ -123,7 +123,7 @@ describe('Given the usersReducer()', () => {
     });
 
     describe('When we dispatched the DELETECREATED action', () => {
-        test('Then the state should have the new action payload', () => {
+        test('Then the return state should include the action payload updated', () => {
             action = {
                 type: actionTypes.deleteCreated,
                 payload: mockPlace2,
