@@ -14,9 +14,8 @@ export function Menu() {
     };
 
     const items: Array<MenuItems> = [
-        { id: '1', path: 'home', label: 'Inicio' },
-        { id: '2', path: 'profile', label: 'Mi Perfil' },
-        { id: '3', path: 'new-place', label: 'Agrega un viaje' },
+        { id: '1', path: 'home', label: 'Home' },
+        { id: '2', path: 'profile', label: 'Perfil' },
     ];
 
     return (
@@ -30,9 +29,13 @@ export function Menu() {
                     </li>
                 ))}
                 {!users.isLogged ? (
-                    <LoginBtn></LoginBtn>
+                    <li className={styles.menu__list}>
+                        <LoginBtn></LoginBtn>
+                    </li>
                 ) : (
-                    <LogoutBtn></LogoutBtn>
+                    <li className={styles.menu__list}>
+                        <LogoutBtn></LogoutBtn>
+                    </li>
                 )}
             </ul>
         </nav>
