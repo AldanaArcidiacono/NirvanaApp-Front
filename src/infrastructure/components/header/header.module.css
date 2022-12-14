@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     height: 5rem;
-    width: 100vw;
+    width: 26.6rem;
 }
 
 .h1 {
@@ -23,5 +23,4 @@
 
 .header__div {
     display: flex;
-    align-items: center;
 }

@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { useUsers } from '../../../users/hooks/use.user';
 import { IPlace } from '../../entities/places';
 import { PlacesRepo } from '../../services/places.repo';
+import styles from './details.module.css';
 
 export function Details() {
     const initialState = {
@@ -33,10 +34,18 @@ export function Details() {
 
     return (
         <>
-            <h2>DETALLES</h2>
-            <section>
-                <p>{details.city}</p>
+            <section className={styles.details__section}>
+                <div className={styles.details__title_container}>
+                    <h3 className={styles.details__title}>{details.city}</h3>
+                </div>
+                <img
+                    className={styles.details__img}
+                    src={details.img}
+                    alt={'Image of ' + details.city}
+                    height="200"
+                />
                 <button
+                    className={styles.details__button}
                     onClick={() => {
                         handleAddFav(details as IPlace);
                         Swal.fire('Añadido a favoritos!');
@@ -44,13 +53,13 @@ export function Details() {
                 >
                     AddFav
                 </button>
-                <img
-                    src={details.img}
-                    alt={'Image of ' + details.city}
-                    height="200"
-                />
-                <p>{details.description}</p>
-                <p>{details.category}</p>
+                <p className={styles.details__info}>{details.description}</p>
+                <div className={styles.details__must_visit_container}>
+                    <h4 className={styles.details__must_visit}>
+                        Lugares para visitar
+                    </h4>
+                </div>
+                <p className={styles.details__info}>{details.mustVisit}</p>
             </section>
         </>
     );

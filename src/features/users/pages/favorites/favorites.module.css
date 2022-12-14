@@ -16,15 +16,19 @@
     line-height: 32px;
 }
 
-.fav__list {
-    text-decoration: none;
-}
-
 .fav__ul {
     list-style: none;
-    /*display: flex;
+    display: flex;
     flex-wrap: wrap;
-    flex-direction: row; */
+    flex-direction: row;
+    padding-inline-start: 1rem;
+}
+
+.fav__list {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 1rem;
 }
 
 .fav__city {
@@ -40,17 +44,33 @@
     border-radius: 15px;
     width: 170px;
     height: 215px;
-    margin: 1rem;
-}
-
-.no_mg {
-    color: #FFFCF2;
-    position: absolute;
-    padding-block-start: 11.5rem;
-    padding-inline-start: 8.5rem;
-
+    margin: 0.5rem;
 }
 
 .fav__delete {
-    height: 1rem;
+    width: 7rem;
+    height: 2.5rem;
+    margin-inline-start: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    background-color: #A4A0FF;
+    color: #FFFCF2;
+    border: 0px;
+}
+
+.container__no_fav {
+    height: 6rem;
+    width: 18rem;
+    margin-block: 1rem;
+    margin-inline-start: 3rem;
+    background-color: #FFFCF2;
+}
+
+.no_fav {
+    padding-inline: 1rem;
+    padding-block-start: 0.5rem;
+    color: #A4A0FF;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 32px;
 }

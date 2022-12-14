@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useUsers } from '../../../../features/users/hooks/use.user';
 import styles from './login.module.css';
 
@@ -9,6 +9,7 @@ type formData = {
 };
 
 export function Login() {
+    const navigate = useNavigate();
     const { handleLogin, users } = useUsers();
 
     const initialLoginState: formData = {
@@ -28,6 +29,7 @@ export function Login() {
         if (users.token) {
             localStorage.setItem('token', users.token);
         }
+        navigate('/home');
     };
 
     return (

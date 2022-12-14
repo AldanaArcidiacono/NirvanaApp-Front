@@ -12,8 +12,10 @@ export function CreatedPlaces() {
         <>
             <div className={styles.title__container_created}>
                 <h2 className={styles.title_created}>Tus destinos creados</h2>
+                <Link to={'/new-place'} className={styles.new_created__link}>
+                    Crea un nuevo viaje!
+                </Link>
             </div>
-            <Link to={'/new-place'}>Añade un nuevo destino!</Link>
 
             <section>
                 {(users.user as IUser).createdPlaces.length > 0 ? (
@@ -39,7 +41,11 @@ export function CreatedPlaces() {
                                         />
                                     </Link>
                                     <p>{item.category}</p>
-                                    <button onClick={() => handleDelete(item)}>
+
+                                    <button
+                                        className={styles.created__delete}
+                                        onClick={() => handleDelete(item)}
+                                    >
                                         DeletePlace
                                     </button>
                                 </li>
@@ -47,7 +53,11 @@ export function CreatedPlaces() {
                         )}
                     </ul>
                 ) : (
-                    <p>Aún no haz creado ningún viaje!</p>
+                    <div className={styles.container__no_created}>
+                        <p className={styles.no_created}>
+                            Aún no has creado ningún viaje!
+                        </p>
+                    </div>
                 )}
             </section>
         </>

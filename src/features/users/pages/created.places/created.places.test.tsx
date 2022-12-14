@@ -59,7 +59,7 @@ describe('Given CreatedPlaces component', () => {
                     </Provider>
                 </>
             );
-            const element = screen.getByText(/no haz creado/i);
+            const element = screen.getByText(/no has creado/i);
             expect(element).toBeInTheDocument();
         });
     });

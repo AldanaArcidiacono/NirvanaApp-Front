@@ -25,22 +25,22 @@ export function Favorites() {
                                         className={styles.fav__img}
                                     />
                                 </Link>
+
                                 <button
                                     className={styles.fav__delete}
                                     onClick={() => handleDeleteFav(item)}
                                 >
-                                    {/* <img
-                                        src="./assets/no-mg2.png"
-                                        alt="no me gusta icon"
-                                        className={styles.no_mg}
-                                    /> */}
                                     DeleteFav
                                 </button>
                             </li>
                         ))}
                     </ul>
                 ) : (
-                    <p>Aún no tienes tus lugares favoritos!</p>
+                    <div className={styles.container__no_fav}>
+                        <p className={styles.no_fav}>
+                            Aún no tienes tus lugares favoritos!
+                        </p>
+                    </div>
                 )}
             </section>
         </>
