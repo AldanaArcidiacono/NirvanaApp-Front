@@ -9,6 +9,5 @@ export const appStore = configureStore({
     },
 });
 
-//export type rootStore = typeof appStore;
 export type rootStore = typeof appStore.dispatch;
 export type rootState = ReturnType<typeof appStore.getState>;
