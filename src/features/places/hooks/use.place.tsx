@@ -4,6 +4,7 @@ import { rootState } from '../../../infrastructure/store/store';
 import {
     addCreatedActionCreator,
     deleteCreatedActionCreator,
+    updateCreatedActionCreator,
 } from '../../users/reducer/user.action.creator';
 import { IPlace, IProtoPlace } from '../entities/places';
 import * as ac from '../reducer/place.action.creator';
@@ -26,11 +27,11 @@ export const usePlaces = () => {
             dispatcher(addCreatedActionCreator(place.place));
         });
     };
-
     const handleUpdate = (updatedPlace: IProtoPlace, id: string) => {
-        apiPlaces
-            .update(updatedPlace, id)
-            .then((place) => dispatcher(ac.updateActionCreator(place)));
+        apiPlaces.update(updatedPlace, id).then((place) => {
+            dispatcher(ac.updateActionCreator(place));
+            dispatcher(updateCreatedActionCreator(place));
+        });
     };
 
     const handleDelete = (place: IPlace) => {

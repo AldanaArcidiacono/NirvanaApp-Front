@@ -70,5 +70,19 @@ export const userReducer = createReducer(initialUserState, (builder) => {
             ),
         } as IUser,
     }));
+
+    builder.addCase(ac.updateCreatedActionCreator, (state, action) => {
+        console.log(action.payload, 'user:', state.user?.createdPlaces);
+        return {
+            ...state,
+            user: {
+                ...(state.user as IUser),
+                createdPlaces: (state.user as IUser).createdPlaces.map(
+                    (place) =>
+                        place.id === action.payload.id ? action.payload : place
+                ),
+            },
+        };
+    });
     builder.addDefaultCase((state) => state);
 });
