@@ -98,3 +98,11 @@ export const mockAppStore3 = configureStore({
     },
     preloadedState: preloadState,
 });
+
+export const mockAppStoreUpdate = configureStore({
+    reducer: {
+        users: userReducer,
+        places: placesReducer,
+    },
+    preloadedState: preloadState,
+});
