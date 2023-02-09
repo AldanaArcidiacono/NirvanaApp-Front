@@ -22,11 +22,11 @@ export function Profile() {
             </div>
 
             <section>
-                <Favorites></Favorites>
+                <Favorites />
             </section>
 
             <section>
-                <CreatedPlaces></CreatedPlaces>
+                <CreatedPlaces />
             </section>
         </>
     );

@@ -3,6 +3,7 @@ import { DetailsCreatedPlaces } from '../../../features/places/pages/details.cre
 import { Details } from '../../../features/places/pages/details/details';
 import { NewPlace } from '../../../features/places/pages/new.place/new.place';
 import { Profile } from '../../../features/users/pages/profile/profile';
+import { UpdatePlace } from '../../../features/users/pages/update.place/update.place';
 import { HomePage } from '../pages/home/home';
 import { Login } from '../pages/login/login';
 import { MustBeLog } from '../pages/must.be.log/must.be.log';
@@ -48,7 +49,10 @@ export function AppRoutes() {
                 <Route index element={<HomePage />}></Route>
                 <Route path=":id" element={<DetailsCreatedPlaces />}></Route>
             </Route>
-
+            <Route path="/update-place/">
+                <Route index element={<HomePage />}></Route>
+                <Route path=":id" element={<UpdatePlace />}></Route>
+            </Route>
             <Route path="/must-be-log" element={<MustBeLog />}></Route>
             <Route path="" element={<HomePage />}></Route>
             <Route
