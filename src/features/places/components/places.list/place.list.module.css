@@ -2,6 +2,18 @@
     list-style: none;
 }
 
+.list__li {
+    margin: 2rem;
+}
+
 .list__link {
     text-decoration: none;
+}
+
+
+@media (min-width: 420px) {
+    .list__ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
