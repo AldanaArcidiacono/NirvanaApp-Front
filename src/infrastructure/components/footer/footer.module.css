@@ -3,43 +3,54 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-direction: column;
     height: 4rem;
-    width: fit-content;
+    width: auto;
 }
 
 .h3 {
     color: #FFFCF2;
     font-family: 'Playfair Display', serif;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.8rem;
     line-height: 32px;
     margin-inline-start: 0.5rem;
 }
 
 .footer__img {
     margin-inline-start: 1rem;
-}
-
-.footer__div {
     height: 2rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 }
 
 .div__logo {
     display: flex;
     align-items: center;
-    margin-block-start: 2rem;
 }
 
-.div__address {
+.address {
     color: #FFFCF2;
-    font-size: 0.8rem;
-    height: 1rem;
-    width: 140px;
-    margin-inline-start: 10.5rem;
+    font-size: 1rem;
     margin-inline-end: 1rem;
-    margin-block-start: 1rem;
+}
+
+@media (max-width: 420px) {
+    .footer {
+        display: flex;
+        width: 26.6rem;
+    }
+
+    .footer__div {
+        justify-content: space-between;
+    }
+
+    .h3 {
+        font-size: 1.5rem;
+    }
+
+    .footer__img {
+        height: 1.8rem;
+    }
+
+    .address {
+        width: 173px;
+    }
 }
