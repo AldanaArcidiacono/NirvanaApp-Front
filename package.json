@@ -1,5 +1,5 @@
 {
-    "name": "Aldana_Arcidiacono_Front-Final-Project-202210-MAD ",
+    "name": "nirvana-app-front",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -35,8 +35,18 @@
             "react-app/jest",
             "prettier"
         ],
-        "rules": {
-            "testing-library/no-render-in-setup": "off"
+        "rules": {},
+        "files": [
+            "src/**/*.spec.cy.ts"
+        ],
+        "parserOptions": {
+            "project": "./tsconfig.spec.json"
+        },
+        "plugins": [
+            "cypress"
+        ],
+        "env": {
+            "cypress/globals": true
         }
     },
     "prettier": {
@@ -62,7 +72,10 @@
     },
     "devDependencies": {
         "@babel/plugin-transform-modules-commonjs": "^7.18.6",
-        "eslint-config-prettier": "^8.5.0"
+        "@cypress/code-coverage": "^3.10.0",
+        "cypress": "^12.5.1",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-cypress": "^2.12.1"
     },
     "babel": {
         "env": {
