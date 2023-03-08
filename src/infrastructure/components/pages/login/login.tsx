@@ -59,10 +59,16 @@ export function Login() {
                     </button>
                 </form>
                 <div className={styles.login__text}>
-                    <p>Aún no tienes una cuenta? Para registrarte</p>
-                    <Link to={'/register'} className={styles.login__link_text}>
-                        haz click aquí
-                    </Link>
+                    <p>Aún no tienes una cuenta?</p>
+                    <p>
+                        Para registrarte{' '}
+                        <Link
+                            to={'/register'}
+                            className={styles.login__link_text}
+                        >
+                            haz click aquí
+                        </Link>
+                    </p>
                 </div>
             </section>
         </>

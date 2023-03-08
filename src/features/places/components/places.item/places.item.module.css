@@ -1,7 +1,7 @@
 .list__container {
     display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-start;
+    align-items: flex-end;
+    flex-direction: row-reverse;
 }
 
 .img__container {
@@ -16,8 +16,8 @@
 
 .list__container_text {
     display: flex;
-    align-items: center;
-    flex-direction: column-reverse;
+    align-items: flex-end;
+    flex-direction: row;
 }
 
 .list__city {
@@ -25,11 +25,15 @@
     font-family: 'Playfair Display', serif;
     font-size: 2rem;
     position: absolute;
+    padding-block: 2rem;
+    padding-inline-start: 3rem;
 }
 
 .location {
     color: #FFFCF2;
     position: absolute;
+    padding-block: 2.2rem;
+    padding-inline-start: 1rem;
 }
 
 @media (min-width: 420px) {
@@ -39,9 +43,10 @@
     }
 
     .list__city {
-        font-size: 1.5rem;
-        width: 305px;
+        font-size: 1.8rem;
     }
 
-    .location {}
+    .location {
+        padding-block: 2rem;
+    }
 }

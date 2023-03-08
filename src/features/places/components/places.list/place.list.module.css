@@ -15,5 +15,6 @@
     .list__ul {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
 }
