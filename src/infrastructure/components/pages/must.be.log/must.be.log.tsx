@@ -11,14 +11,15 @@ export function MustBeLog() {
                         Debes estar loggeado para ingresar a esta página
                     </h3>
                 </div>
-
-                <p className={styles.no_log__text}>Ya tienes una cuenta?</p>
-                <p className={styles.no_log__text}>
-                    Para iniciar sesión{' '}
-                    <Link to={'/login'} className={styles.no_log__link}>
-                        haz click aquí
-                    </Link>
-                </p>
+                <div className={styles.no_log__text}>
+                    <p>Ya tienes una cuenta?</p>
+                    <p>
+                        Para iniciar sesión{' '}
+                        <Link to={'/login'} className={styles.no_log__link}>
+                            haz click aquí
+                        </Link>
+                    </p>
+                </div>
             </div>
         </>
     );

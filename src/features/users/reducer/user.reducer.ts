@@ -33,6 +33,7 @@ export const userReducer = createReducer(initialUserState, (builder) => {
         user: null,
         token: null,
     }));
+
     builder.addCase(ac.addFavActionCreator, (state, action) => ({
         ...state,
         user: {
@@ -40,6 +41,7 @@ export const userReducer = createReducer(initialUserState, (builder) => {
             favPlaces: [...(state.user as IUser).favPlaces, action.payload],
         } as IUser,
     }));
+    
     builder.addCase(ac.deleteFavActionCreator, (state, action) => ({
         ...state,
         user: {
@@ -70,5 +72,19 @@ export const userReducer = createReducer(initialUserState, (builder) => {
             ),
         } as IUser,
     }));
+
+    builder.addCase(ac.updateCreatedActionCreator, (state, action) => {
+        console.log('REDUCER USER', action.payload, 'user:', state);
+        return {
+            ...state,
+            user: {
+                ...(state.user as IUser),
+                createdPlaces: (state.user as IUser).createdPlaces.map(
+                    (place) =>
+                        place.id === action.payload.id ? action.payload : place
+                ),
+            },
+        };
+    });
     builder.addDefaultCase((state) => state);
 });

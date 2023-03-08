@@ -1,0 +1,10 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["es5", "dom"],
+        "types": ["cypress"], // Esto eos para que use los tipos de cypress que vienen con el paquete
+        "isolatedModules": false // Esto es para que no se queje de los imports
+    },
+    "include": ["**/*.ts"]
+}

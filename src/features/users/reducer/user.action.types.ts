@@ -6,4 +6,5 @@ export const actionTypes = {
     deleteFav: 'user@deleteFav',
     addCreated: 'user@addCreated',
     deleteCreated: 'user@deleteCreated',
+    updateCreated: 'user@updateCreated',
 };

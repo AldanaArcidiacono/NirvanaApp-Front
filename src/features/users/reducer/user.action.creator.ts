@@ -20,3 +20,6 @@ export const addCreatedActionCreator = createAction<IProtoPlace>(
 export const deleteCreatedActionCreator = createAction<IPlace>(
     actionTypes.deleteCreated
 );
+export const updateCreatedActionCreator = createAction<IPlace>(
+    actionTypes.updateCreated
+);
