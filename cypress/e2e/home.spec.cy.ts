@@ -1,24 +1,28 @@
-const visitHomePage = () => cy.visit('/');
+const visitHomePage = () => cy.visit('/'); // Aquí seleccionamos qué parte de nuestra página queremos testear
+
 beforeEach(() => {
-    visitHomePage();
+    visitHomePage(); // En el beforeEach cargamos la página
 });
 
 describe('Given the HOME page', () => {
     it('Then it should display the app title', () => {
-        const title = cy.get('h2').should('contain', 'Todos los destinos');
-        expect(title).to.exist;
+        // Es el equivalente de test en Cypress
+        const title = cy // Viene de Cypress, lo ponemos siempre y accedemos a sus métodos
+            .get('h2') // Le decimos que encuentre la etiqueta (en este caso el h2)
+            .should('contain', 'Inicio'); // Le decimos que debería contener como texto
+        expect(title).to.exist; // Y esperamos que este tpítulo exista
     });
 
     it('Then it should display the images', () => {
         const imageClass = cy
             .get('img')
-            .should('have.class', 'places_item_list__img__d7epb');
+            .should('have.class', 'places_item_list__img__d7epb'); // Le decimos qué clase buscar desde la interfaz de Cypress
         expect(imageClass).to.exist;
     });
 
     describe('When we click on LOGIN,', () => {
         it('Then it should navigate to /login', () => {
-            cy.get('button').contains('Login').click();
+            cy.get('button').contains('Login').click(); // Probamos que el botón y la navegación este funcionando
             cy.url().should('contain', '/login');
         });
     });
