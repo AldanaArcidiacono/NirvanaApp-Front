@@ -29,20 +29,27 @@ Modificar package.json (o archivo de configuración de EsLint de tenerlo):
         "extends": [
             "react-app",
             "react-app/jest",
-            "prettier"
+            "prettier",
+            "plugin:cypress/recommended"
         ],
-        "files": [
-            "src/**/*.spec.cy.ts"
-        ],
+        "rules": {
+            "cypress/no-assigning-return-values": "error",
+            "cypress/no-unnecessary-waiting": "error",
+            "cypress/assertion-before-screenshot": "warn",
+            "cypress/no-force": "warn",
+            "cypress/no-async-tests": "error",
+            "cypress/no-pause": "error"
+        },
         "parserOptions": {
-            "project": "./tsconfig.spec.json"
+            "project": "./**/tsconfig.json"
         },
         "plugins": [
             "cypress"
         ],
         "env": {
             "cypress/globals": true
-        }
+        },
+        "overrides": []
     },
 ```
 
