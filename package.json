@@ -8,11 +8,10 @@
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^14.4.3",
         "@types/jest": "^27.5.2",
-        "@types/node": "^17.0.45",
         "@types/react": "^18.0.25",
         "@types/react-dom": "^18.0.8",
-        "jwt-decode": "^3.1.2",
         "eslint-config-prettier": "^8.5.0",
+        "jwt-decode": "^3.1.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-redux": "^8.0.5",
@@ -34,21 +33,28 @@
         "extends": [
             "react-app",
             "react-app/jest",
-            "prettier"
+            "prettier",
+            "plugin:cypress/recommended",
+            "plugin:chai-friendly/recommended"
         ],
-        "rules": {},
-        "files": [
-            "src/**/*.spec.cy.ts"
-        ],
+        "rules": {
+            "cypress/no-unnecessary-waiting": "error",
+            "cypress/assertion-before-screenshot": "warn",
+            "cypress/no-force": "warn",
+            "cypress/no-async-tests": "error",
+            "cypress/no-pause": "error"
+        },
         "parserOptions": {
-            "project": "./tsconfig.spec.json"
+            "project": "./**/tsconfig.json"
         },
         "plugins": [
-            "cypress"
+            "cypress",
+            "@cypress/dev"
         ],
         "env": {
             "cypress/globals": true
-        }
+        },
+        "overrides": []
     },
     "prettier": {
         "singleQuote": true
@@ -74,6 +80,7 @@
     "devDependencies": {
         "@babel/plugin-transform-modules-commonjs": "^7.18.6",
         "@cypress/code-coverage": "^3.10.0",
+        "@types/node": "^18.15.3",
         "cypress": "^12.5.1",
         "eslint-plugin-cypress": "^2.12.1"
     }

@@ -6,11 +6,11 @@ beforeEach(() => {
 
 describe('Given the HOME page', () => {
     it('Then it should display the app title', () => {
-        // Es el equivalente de test en Cypress
-        const title = cy // Viene de Cypress, lo ponemos siempre y accedemos a sus métodos
-            .get('h2') // Le decimos que encuentre la etiqueta (en este caso el h2)
-            .should('contain', 'Inicio'); // Le decimos que debería contener como texto
-        expect(title).to.exist; // Y esperamos que este tpítulo exista
+        const title = 'Todos los destinos';
+        // CY viene de Cypress, lo ponemos siempre y accedemos a sus métodos
+        cy.get('h2') // Le decimos que encuentre la etiqueta (en este caso el h2)
+            .should('contain', title); // Le decimos que debería contener como texto
+        expect(title).to.exist;
     });
 
     it('Then it should display the images', () => {
@@ -18,6 +18,13 @@ describe('Given the HOME page', () => {
             .get('img')
             .should('have.class', 'places_item_list__img__d7epb'); // Le decimos qué clase buscar desde la interfaz de Cypress
         expect(imageClass).to.exist;
+    });
+
+    describe('When we click on LOGIN,', () => {
+        it(' Then it should navigate to /login', () => {
+            cy.get('button').contains('Login').click();
+            cy.url().should('contain', '/login');
+        });
     });
 
     describe('When we click on LOGIN,', () => {
