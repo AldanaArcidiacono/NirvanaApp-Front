@@ -35,7 +35,7 @@
             "react-app/jest",
             "prettier",
             "plugin:cypress/recommended",
-            "plugin:chai-friendly/recommended"
+            "@cypress/eslint-plugin-dev"
         ],
         "rules": {
             "cypress/no-unnecessary-waiting": "error",
