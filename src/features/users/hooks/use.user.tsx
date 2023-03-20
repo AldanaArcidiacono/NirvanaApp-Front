@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { rootState } from '../../../infrastructure/store/store';
 import { UserRepo } from '../services/user.repo';
 import * as ac from '../reducer/user.action.creator';
+import * as acE from '../../errors/reducer/error.action.creator';
 import { IProtoUser, IUser } from '../entities/users';
 import { IPlace } from '../../places/entities/places';
 
@@ -33,7 +34,8 @@ export const useUsers = () => {
         }
         apiUsers
             .addFav(place.id)
-            .then(() => dispatcher(ac.addFavActionCreator(place)));
+            .then(() => dispatcher(ac.addFavActionCreator(place)))
+            .catch((error) => dispatcher(acE.setLoadError(error.message)));
     };
 
     const handleDeleteFav = (place: IPlace) => {
